@@ -323,8 +323,6 @@ body{font-family:'Nunito',sans-serif;background:var(--bg0);color:var(--t1);min-h
     <h1 class="banner-title" id="banner-headline"></h1>
     <p class="banner-sub" id="banner-sub"></p>
     <div class="banner-stats">
-      <div class="stat-pill"><span class="lbl">Per Pull</span><span class="val" id="banner-p1x">—</span></div>
-      <div class="stat-pill"><span class="lbl">10× Pull</span><span class="val" id="banner-p10x">—</span></div>
       <div class="stat-pill"><span class="lbl">Sisa Item</span><span class="val" id="banner-rem">—</span></div>
     </div>
   </div>
@@ -413,7 +411,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg0);color:var(--t1);min-h
     <div class="sp-prize-name" id="sp-prize-name"></div>
     <div class="sp-tier-badge" id="sp-tier-badge"></div>
     <div class="sp-puller" id="sp-puller"></div>
-    <button class="sp-close" onclick="closeSpotlight()">✨ Keren Banget!</button>
+    <button class="sp-close" onclick="closeSpotlight()">✨ Nice one!</button>
   </div>
 </div>
 
@@ -752,7 +750,7 @@ function flipCard(i,cardEl){
 
 function checkAllFlipped(){
   const allDone=pulledNow.every((_,j)=>{const e=document.getElementById('rci'+j);return e&&(e.classList.contains('flipped')||e.classList.contains('high-rarity-flipped'));});
-  if(allDone)document.getElementById('reveal-title').textContent='🎉 Selamat! Hadiahmu sudah siap dikirim!';
+  if(allDone)document.getElementById('reveal-title').textContent='🎉 Selamat! ini hadiahmu!';
 }
 
 function revealAll(){
