@@ -3,20 +3,38 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PSA 10 FIESTA · Pokémon TCG</title>
+<title>Coneh Gacha V.2</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;600;700;900&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --bg0:#06060D;--bg1:#0C0C18;--bg2:#121220;--bg3:#1A1A2E;
-  --orange:#F97316;--orange-l:#FB923C;
-  --amber:#F59E0B;--gold:#EAB308;
+  --orange:#F97316;--orange-l:#FB923C;--amber:#F59E0B;--gold:#EAB308;
   --t1:#FFFFFF;--t2:#CBD5E1;--t3:#64748B;
-  --border:rgba(255,255,255,0.08);--border-h:rgba(255,255,255,0.16);
+  --border:rgba(255,255,255,.08);--border-h:rgba(255,255,255,.16);
   --r:12px;--rl:16px;--rxl:24px
 }
 body{font-family:'Nunito',sans-serif;background:var(--bg0);color:var(--t1);min-height:100vh;overflow-x:hidden}
+
+/* APP HEADER */
+.app-header{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:rgba(6,6,13,.95);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:80;backdrop-filter:blur(10px)}
+.app-logo{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.1em;background:linear-gradient(135deg,#FF9A3C,#FFD700);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.header-right{display:flex;align-items:center;gap:10px}
+.cms-fab{background:rgba(255,255,255,.06);border:1px solid var(--border-h);color:var(--t2);font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;padding:8px 16px;border-radius:100px;cursor:pointer;display:flex;align-items:center;gap:7px;transition:all .2s}
+.cms-fab:hover{border-color:var(--orange-l);color:var(--orange-l)}
+
+/* GACHA SELECTOR */
+.selector-wrap{background:var(--bg1);border-bottom:1px solid var(--border);overflow:hidden}
+.selector{display:flex;align-items:stretch;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding:0 12px}
+.selector::-webkit-scrollbar{display:none}
+.g-tab{flex-shrink:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10px 18px;cursor:pointer;border-bottom:3px solid transparent;background:none;border-top:none;border-left:none;border-right:none;color:var(--t3);font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;transition:all .2s;min-width:100px;gap:2px;white-space:nowrap}
+.g-tab:hover{color:var(--t2);background:rgba(255,255,255,.03)}
+.g-tab.active{color:var(--orange-l);border-bottom-color:var(--orange-l)}
+.g-tab-name{font-size:13px;font-weight:700}
+.g-tab-rem{font-size:10px;font-weight:600;opacity:.7}
+.g-tab-add{flex-shrink:0;padding:10px 16px;background:none;border:none;color:var(--t3);font-family:'Nunito',sans-serif;font-size:22px;cursor:pointer;transition:color .2s;align-self:center}
+.g-tab-add:hover{color:var(--orange-l)}
 
 /* BANNER */
 .banner{position:relative;overflow:hidden}
@@ -24,22 +42,22 @@ body{font-family:'Nunito',sans-serif;background:var(--bg0);color:var(--t1);min-h
 .particles{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden}
 .particle{position:absolute;bottom:-10px;border-radius:50%;animation:float-up linear infinite;opacity:0}
 @keyframes float-up{0%{transform:translateY(0) scale(1);opacity:.8}100%{transform:translateY(-260px) scale(0);opacity:0}}
-.banner-content{position:relative;z-index:1;max-width:940px;margin:0 auto;padding:48px 20px 36px;display:flex;flex-direction:column;align-items:center;text-align:center}
-.banner-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(249,115,22,.12);border:1px solid rgba(249,115,22,.4);color:var(--orange-l);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 14px;border-radius:100px;margin-bottom:18px}
-.banner-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,9vw,82px);line-height:.95;letter-spacing:.03em;background:linear-gradient(140deg,#FF9A3C 0%,#FFD700 45%,#FF6B35 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:14px}
-.banner-sub{font-size:15px;color:var(--t2);font-weight:600;margin-bottom:28px}
+.banner-content{position:relative;z-index:1;max-width:940px;margin:0 auto;padding:40px 20px 30px;display:flex;flex-direction:column;align-items:center;text-align:center}
+.banner-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(249,115,22,.12);border:1px solid rgba(249,115,22,.4);color:var(--orange-l);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 14px;border-radius:100px;margin-bottom:16px}
+.banner-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(38px,8vw,76px);line-height:.95;letter-spacing:.03em;background:linear-gradient(140deg,#FF9A3C 0%,#FFD700 45%,#FF6B35 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px}
+.banner-sub{font-size:14px;color:var(--t2);font-weight:600;margin-bottom:24px}
 .banner-stats{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
-.stat-pill{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.06);border:1px solid var(--border);padding:9px 18px;border-radius:100px;font-size:13px;font-weight:700}
+.stat-pill{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.06);border:1px solid var(--border);padding:8px 16px;border-radius:100px;font-size:13px;font-weight:700}
 .stat-pill .lbl{color:var(--t3);font-size:11px;font-weight:600}
 .stat-pill .val{color:var(--orange-l)}
 
 /* MAIN */
-.main{max-width:940px;margin:0 auto;padding:28px 16px 120px}
+.main{max-width:940px;margin:0 auto;padding:24px 16px 100px}
 .section-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
 .section-title{font-family:'Bebas Neue',sans-serif;font-size:21px;letter-spacing:.05em;color:var(--t2)}
 
 /* PRIZE GRID */
-.prize-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(138px,1fr));gap:12px;margin-bottom:28px}
+.prize-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(136px,1fr));gap:12px;margin-bottom:28px}
 .pcard{position:relative;background:var(--bg2);border:1px solid var(--border);border-radius:var(--rl);padding:14px 10px;cursor:default;transition:all .25s ease;overflow:hidden;display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px}
 .pcard:hover:not(.sold-out){border-color:var(--border-h);transform:translateY(-4px)}
 .pcard.rainbow{border-color:rgba(168,85,247,.5)}.pcard.rainbow:hover{border-color:rgba(168,85,247,.9);box-shadow:0 0 28px rgba(168,85,247,.22)}
@@ -48,7 +66,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg0);color:var(--t1);min-h
 .pcard.rainbow::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(168,85,247,.1),rgba(59,130,246,.05),rgba(249,115,22,.1));z-index:0}
 .pcard.gold::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(234,179,8,.12),rgba(249,115,22,.06));z-index:0}
 .card-inner{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:8px;width:100%}
-.card-art{width:84px;height:116px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:44px;position:relative;overflow:hidden;flex-shrink:0}
+.card-art{width:82px;height:114px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:42px;position:relative;overflow:hidden;flex-shrink:0}
 .card-art img{width:100%;height:100%;object-fit:cover}
 .rainbow-a{background:linear-gradient(135deg,#1a0030,#0d1a40,#0d3020);box-shadow:0 0 0 2px rgba(168,85,247,.7),inset 0 0 20px rgba(168,85,247,.2)}
 .gold-a{background:linear-gradient(135deg,#1a1200,#2a1a00);box-shadow:0 0 0 2px rgba(234,179,8,.7),inset 0 0 20px rgba(234,179,8,.1)}
@@ -66,8 +84,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg0);color:var(--t1);min-h
 
 /* PULL SECTION */
 .pull-section{background:var(--bg2);border:1px solid var(--border);border-radius:var(--rxl);padding:24px;margin-bottom:24px}
-
-.pull-buttons{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pull-buttons{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
 .pull-btn{position:relative;border:none;border-radius:var(--rl);padding:18px 12px;cursor:pointer;font-family:'Nunito',sans-serif;font-weight:900;transition:all .2s;overflow:hidden;display:flex;flex-direction:column;align-items:center;gap:4px}
 .pull-btn:active:not(:disabled){transform:scale(.97)}.pull-btn:disabled{opacity:.45;cursor:not-allowed}
 .btn-single{background:linear-gradient(135deg,#7C2D12,#C2410C,#EA580C);color:#fff}
@@ -76,7 +93,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg0);color:var(--t1);min-h
 .btn-ten:hover:not(:disabled){box-shadow:0 0 32px rgba(124,58,237,.45)}
 .pull-lbl{font-size:13px;letter-spacing:.02em;opacity:.9}.pull-price{font-size:22px;font-weight:900}
 .pull-savings{position:absolute;top:9px;right:9px;background:rgba(255,255,255,.2);font-size:9px;font-weight:900;padding:2px 7px;border-radius:100px;letter-spacing:.05em}
-.total-rem{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:16px;font-size:13px;color:var(--t3);font-weight:600}
+.total-rem{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:4px;font-size:13px;color:var(--t3);font-weight:600}
 .total-rem strong{color:var(--t2)}
 .stock-bar{width:100%;height:5px;background:rgba(255,255,255,.07);border-radius:100px;margin-top:10px;overflow:hidden}
 .stock-fill{height:100%;background:linear-gradient(90deg,var(--orange),var(--amber));border-radius:100px;transition:width .5s ease}
@@ -93,31 +110,54 @@ body{font-family:'Nunito',sans-serif;background:var(--bg0);color:var(--t1);min-h
 .odds-table td{padding:10px 14px;border-top:1px solid var(--border);color:var(--t2);font-weight:600}
 .odds-table tr:hover td{background:rgba(255,255,255,.02)}
 
-/* PULL HISTORY */
+/* HISTORY */
 .history-list{display:flex;flex-direction:column;gap:8px}
 .history-empty{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:32px;text-align:center;color:var(--t3);font-size:14px;font-weight:600}
 .history-item{display:flex;align-items:center;gap:12px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:10px 14px;animation:slidein .35s ease}
 @keyframes slidein{from{transform:translateY(-8px);opacity:0}to{transform:translateY(0);opacity:1}}
-.h-thumb{width:42px;height:58px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;overflow:hidden}
+.h-thumb{width:42px;height:58px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;overflow:hidden}
 .h-thumb img{width:100%;height:100%;object-fit:cover}
 .h-info{flex:1;min-width:0}
 .h-name{font-size:13px;font-weight:700;color:var(--t1);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.h-puller{font-size:11px;color:var(--t3);font-weight:600;margin-top:1px}
 .h-tier{display:inline-block;font-size:10px;font-weight:900;padding:2px 8px;border-radius:100px;text-transform:uppercase;letter-spacing:.05em;margin-top:3px}
 .h-pullnum{font-size:10px;color:var(--t3);font-weight:600;margin-top:2px}
 .h-time{font-size:11px;color:var(--t3);font-weight:600;flex-shrink:0;text-align:right}
-.clear-history-btn{background:none;border:none;color:var(--t3);font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;cursor:pointer;padding:4px 10px;border-radius:100px;transition:all .2s}
-.clear-history-btn:hover{color:#EF4444;background:rgba(239,68,68,.1)}
+.history-footer{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.hist-btn{background:var(--bg2);border:1px solid var(--border);color:var(--t2);font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;padding:9px 18px;border-radius:100px;cursor:pointer;transition:all .2s;flex:1;text-align:center}
+.hist-btn:hover{border-color:var(--border-h);color:var(--t1)}
+.hist-btn.primary{background:rgba(249,115,22,.1);border-color:rgba(249,115,22,.3);color:var(--orange-l)}
+.hist-btn.primary:hover{background:rgba(249,115,22,.2)}
+.clear-hist-btn{background:none;border:none;color:var(--t3);font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;cursor:pointer;padding:4px 10px;border-radius:100px;transition:all .2s}
+.clear-hist-btn:hover{color:#EF4444;background:rgba(239,68,68,.1)}
 
-/* MODAL */
-.modal-ov{position:fixed;inset:0;background:rgba(0,0,0,.92);display:flex;flex-direction:column;align-items:center;padding:32px 16px 60px;z-index:100;opacity:0;pointer-events:none;transition:opacity .3s;overflow-y:auto}
+/* NAME MODAL */
+.name-ov{position:fixed;inset:0;background:rgba(0,0,0,.75);display:flex;align-items:center;justify-content:center;z-index:150;opacity:0;pointer-events:none;transition:opacity .25s;padding:20px}
+.name-ov.active{opacity:1;pointer-events:all}
+.name-box{background:var(--bg2);border:1px solid var(--border-h);border-radius:var(--rxl);padding:28px 24px;width:100%;max-width:400px;display:flex;flex-direction:column;gap:16px;transform:translateY(20px) scale(.97);transition:transform .25s ease}
+.name-ov.active .name-box{transform:translateY(0) scale(1)}
+.name-box-title{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.05em;color:var(--t1)}
+.name-box-sub{font-size:13px;color:var(--t3);font-weight:600;margin-top:-8px}
+.name-input{width:100%;background:var(--bg3);border:1px solid var(--border-h);border-radius:10px;padding:12px 14px;color:var(--t1);font-family:'Nunito',sans-serif;font-size:16px;font-weight:700;outline:none;transition:border-color .2s}
+.name-input:focus{border-color:rgba(249,115,22,.6)}
+.name-input.shake{animation:shake .4s ease}
+@keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}
+.name-actions{display:grid;grid-template-columns:1fr 2fr;gap:10px}
+.btn-cancel{background:none;border:1px solid var(--border-h);color:var(--t3);font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;padding:11px;border-radius:100px;cursor:pointer;transition:all .2s}
+.btn-cancel:hover{border-color:var(--border-h);color:var(--t2)}
+.btn-confirm-pull{background:linear-gradient(135deg,#7C2D12,#EA580C);border:none;color:#fff;font-family:'Nunito',sans-serif;font-size:14px;font-weight:900;padding:11px;border-radius:100px;cursor:pointer;transition:all .2s}
+.btn-confirm-pull.ten{background:linear-gradient(135deg,#4C1D95,#7C3AED)}
+.btn-confirm-pull:hover{opacity:.9;transform:scale(1.02)}
+
+/* CARD REVEAL MODAL */
+.modal-ov{position:fixed;inset:0;background:rgba(0,0,0,.92);display:flex;flex-direction:column;align-items:center;padding:28px 16px 60px;z-index:100;opacity:0;pointer-events:none;transition:opacity .3s;overflow-y:auto}
 .modal-ov.active{opacity:1;pointer-events:all}
-.reveal-title{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:.05em;color:var(--t2);margin-bottom:16px;text-align:center}
-.reveal-all-btn{background:none;border:1px solid var(--border-h);color:var(--t2);font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;padding:8px 22px;border-radius:100px;cursor:pointer;margin-bottom:24px;transition:all .2s}
-.reveal-all-btn:hover{background:rgba(255,255,255,.06)}
+.reveal-title{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:.05em;color:var(--t2);margin-bottom:20px;text-align:center}
 .cards-grid{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-bottom:28px}
-.rcard{width:110px;height:154px;perspective:700px;cursor:pointer}
+.rcard{width:110px;height:154px;perspective:700px;cursor:pointer;position:relative}
 .rcard-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .65s cubic-bezier(.4,0,.2,1)}
 .rcard-inner.flipped{transform:rotateY(180deg)}
+.rcard-inner.high-rarity-flipped{transform:rotateY(180deg)}
 .cface{position:absolute;inset:0;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;backface-visibility:hidden;-webkit-backface-visibility:hidden}
 .cback{background:linear-gradient(135deg,#1A0A00,#2D1A00);border:2px solid rgba(249,115,22,.4);gap:4px}
 .cback-emoji{font-size:36px}.cback-logo{font-family:'Bebas Neue',sans-serif;color:rgba(249,115,22,.35);font-size:10px;letter-spacing:.1em}
@@ -126,101 +166,171 @@ body{font-family:'Nunito',sans-serif;background:var(--bg0);color:var(--t1);min-h
 .cfront-emoji{font-size:40px;line-height:1}
 .cfront-name{font-size:9px;font-weight:700;color:#fff;line-height:1.3}
 .cfront-tier{font-size:9px;font-weight:900;padding:2px 7px;border-radius:100px;text-transform:uppercase;letter-spacing:.05em;margin-top:2px}
+.rcard.glow-rainbow{animation:glow-r 1.5s ease-in-out infinite alternate}
+.rcard.glow-gold{animation:glow-g 1.5s ease-in-out infinite alternate}
+@keyframes glow-r{0%{box-shadow:0 0 12px rgba(168,85,247,.4),0 0 0 2px rgba(168,85,247,.3)}100%{box-shadow:0 0 28px rgba(168,85,247,.8),0 0 0 3px rgba(168,85,247,.7),0 0 50px rgba(59,130,246,.3)}}
+@keyframes glow-g{0%{box-shadow:0 0 12px rgba(234,179,8,.4),0 0 0 2px rgba(234,179,8,.3)}100%{box-shadow:0 0 28px rgba(234,179,8,.8),0 0 0 3px rgba(234,179,8,.7),0 0 50px rgba(249,115,22,.3)}}
 .modal-actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
 .modal-btn{font-family:'Nunito',sans-serif;font-weight:700;font-size:14px;padding:13px 30px;border-radius:100px;cursor:pointer;transition:all .2s;border:none}
 .modal-btn:hover{opacity:.9;transform:scale(1.03)}
+.mbtn-all{background:linear-gradient(135deg,#4C1D95,#7C3AED);color:#fff}
 .mbtn-keep{background:var(--orange);color:#fff}
 
-/* CMS FAB */
-.cms-fab{position:fixed;bottom:28px;right:24px;z-index:90;background:linear-gradient(135deg,#1A1A2E,#2D2D4E);border:1px solid var(--border-h);color:var(--t2);font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;padding:11px 20px;border-radius:100px;cursor:pointer;display:flex;align-items:center;gap:8px;transition:all .2s;box-shadow:0 4px 24px rgba(0,0,0,.5)}
-.cms-fab:hover{border-color:var(--orange-l);color:var(--orange-l);box-shadow:0 4px 32px rgba(249,115,22,.2)}
+/* BLAST PARTICLES */
+.blast-p{position:fixed;border-radius:50%;pointer-events:none;z-index:499}
+@keyframes blast{0%{transform:translate(0,0) scale(1.2);opacity:1}100%{transform:translate(var(--dx),var(--dy)) scale(0);opacity:0}}
+.shockwave{position:fixed;border-radius:50%;pointer-events:none;z-index:498;border:3px solid var(--sw-color);animation:shockwave .6s ease-out forwards}
+@keyframes shockwave{0%{width:20px;height:20px;margin-left:-10px;margin-top:-10px;opacity:.9}100%{width:200px;height:200px;margin-left:-100px;margin-top:-100px;opacity:0}}
 
-/* CMS OVERLAY */
+/* SPOTLIGHT MODAL */
+.spotlight-ov{position:fixed;inset:0;z-index:500;display:flex;align-items:center;justify-content:center;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .3s;overflow:hidden}
+.spotlight-ov.active{opacity:1;pointer-events:all}
+.spotlight-bg{position:absolute;inset:0;background:rgba(0,0,0,.97);z-index:0}
+.spotlight-bg.rainbow{background:radial-gradient(ellipse at center,rgba(90,20,120,.7) 0%,rgba(0,0,20,.97) 60%)}
+.spotlight-bg.gold{background:radial-gradient(ellipse at center,rgba(80,50,0,.7) 0%,rgba(10,5,0,.97) 60%)}
+.spotlight-sparks{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.spark{position:absolute;border-radius:50%;animation:spark-float linear infinite}
+@keyframes spark-float{0%{transform:translateY(110vh) scale(0);opacity:0}20%{opacity:1;transform:translateY(80vh) scale(1)}80%{opacity:.8}100%{transform:translateY(-10vh) scale(.5) rotate(360deg);opacity:0}}
+.spotlight-box{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;padding:20px;animation:sp-enter .6s cubic-bezier(.34,1.56,.64,1)}
+@keyframes sp-enter{0%{transform:scale(.3) translateY(40px);opacity:0}100%{transform:scale(1) translateY(0);opacity:1}}
+.sp-label{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:.15em;line-height:1}
+.sp-label.rainbow{background:linear-gradient(90deg,#A855F7,#60A5FA,#EC4899,#34D399,#A855F7);background-size:300% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:rainbow-flow 2s linear infinite}
+@keyframes rainbow-flow{0%{background-position:0% center}100%{background-position:300% center}}
+.sp-label.gold{color:#EAB308;text-shadow:0 0 20px #EAB308,0 0 50px rgba(234,179,8,.5);animation:gold-pulse-lbl 1.5s ease-in-out infinite alternate}
+@keyframes gold-pulse-lbl{0%{text-shadow:0 0 20px #EAB308}100%{text-shadow:0 0 40px #EAB308,0 0 80px rgba(249,115,22,.6)}}
+.sp-card-wrap{border-radius:14px;padding:4px;position:relative}
+.sp-card-wrap.rainbow{background:linear-gradient(135deg,#A855F7,#60A5FA,#EC4899,#34D399);background-size:300% 300%;animation:rainbow-bg 3s linear infinite;box-shadow:0 0 60px rgba(168,85,247,.5),0 0 120px rgba(168,85,247,.2)}
+@keyframes rainbow-bg{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.sp-card-wrap.gold{background:linear-gradient(135deg,#EAB308,#F97316,#EAB308);background-size:200%;animation:gold-bg 2s linear infinite;box-shadow:0 0 60px rgba(234,179,8,.6),0 0 120px rgba(234,179,8,.3)}
+@keyframes gold-bg{0%{background-position:0% center}100%{background-position:200% center}}
+.sp-card-inner{border-radius:11px;overflow:hidden;width:160px;height:220px;display:flex;align-items:center;justify-content:center;font-size:80px;background:var(--bg0)}
+.sp-card-inner img{width:100%;height:100%;object-fit:cover}
+.sp-prize-name{font-size:22px;font-weight:900;color:var(--t1);max-width:280px;line-height:1.2}
+.sp-tier-badge{font-size:13px;font-weight:900;padding:5px 16px;border-radius:100px;text-transform:uppercase;letter-spacing:.08em}
+.sp-puller{font-size:14px;color:var(--t2);font-weight:600}
+.sp-puller span{color:var(--orange-l);font-weight:900}
+.sp-close{margin-top:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;font-family:'Nunito',sans-serif;font-size:14px;font-weight:700;padding:12px 32px;border-radius:100px;cursor:pointer;transition:all .2s}
+.sp-close:hover{background:rgba(255,255,255,.2);transform:scale(1.03)}
+
+/* HISTORY SHEET */
+.hist-sheet-ov{position:fixed;inset:0;z-index:250;background:rgba(0,0,0,.85);display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .3s}
+.hist-sheet-ov.active{opacity:1;pointer-events:all}
+.hist-sheet{background:var(--bg1);border-top:1px solid var(--border);margin-top:60px;flex:1;display:flex;flex-direction:column;border-radius:20px 20px 0 0;overflow:hidden}
+.hist-sheet-hd{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid var(--border);flex-shrink:0}
+.hist-sheet-title{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.05em;color:var(--t1)}
+.hist-sheet-close{background:none;border:1px solid var(--border);color:var(--t3);font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;padding:6px 14px;border-radius:100px;cursor:pointer;transition:all .2s}
+.hist-sheet-close:hover{border-color:var(--border-h);color:var(--t2)}
+.hist-sheet-body{overflow-y:auto;flex:1;padding:0}
+.hist-table{width:100%;border-collapse:collapse;font-size:13px}
+.hist-table th{background:rgba(255,255,255,.04);padding:10px 14px;text-align:left;font-weight:700;color:var(--t3);font-size:11px;text-transform:uppercase;letter-spacing:.06em;position:sticky;top:0;z-index:1}
+.hist-table td{padding:9px 14px;border-top:1px solid var(--border);color:var(--t2);font-weight:600;vertical-align:middle}
+.hist-table tr:hover td{background:rgba(255,255,255,.02)}
+.hist-table .th-img{width:20px;text-align:center}
+.tbl-thumb{width:28px;height:38px;border-radius:4px;object-fit:cover;display:flex;align-items:center;justify-content:center;font-size:16px}
+.tbl-thumb img{width:100%;height:100%;object-fit:cover;border-radius:4px}
+
+/* CMS */
 .cms-ov{position:fixed;inset:0;z-index:200;display:flex;opacity:0;pointer-events:none;transition:opacity .3s}
 .cms-ov.active{opacity:1;pointer-events:all}
 .cms-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.65);cursor:pointer}
-.cms-panel{position:relative;margin-left:auto;width:100%;max-width:680px;background:#0E0E1A;border-left:1px solid var(--border);display:flex;flex-direction:column;height:100%;transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1)}
+.cms-panel{position:relative;margin-left:auto;width:100%;max-width:700px;background:#0E0E1A;border-left:1px solid var(--border);display:flex;flex-direction:column;height:100%;transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1)}
 .cms-ov.active .cms-panel{transform:translateX(0)}
-.cms-header{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;border-bottom:1px solid var(--border);flex-shrink:0}
-.cms-title{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.05em;color:var(--t1)}
-.cms-close{background:none;border:1px solid var(--border);color:var(--t3);font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;padding:7px 16px;border-radius:100px;cursor:pointer;transition:all .2s}
+.cms-header{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;border-bottom:1px solid var(--border);flex-shrink:0}
+.cms-title{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.05em;color:var(--t1)}
+.cms-active-gacha{font-size:11px;color:var(--t3);font-weight:600;margin-top:2px}
+.cms-close{background:none;border:1px solid var(--border);color:var(--t3);font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;padding:7px 14px;border-radius:100px;cursor:pointer;transition:all .2s}
 .cms-close:hover{border-color:var(--border-h);color:var(--t2)}
-.cms-tabs{display:flex;border-bottom:1px solid var(--border);flex-shrink:0}
-.cms-tab{flex:1;background:none;border:none;border-bottom:2px solid transparent;color:var(--t3);font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;padding:13px;cursor:pointer;transition:all .2s;margin-bottom:-1px}
+.cms-tabs{display:flex;border-bottom:1px solid var(--border);flex-shrink:0;overflow-x:auto}
+.cms-tabs::-webkit-scrollbar{display:none}
+.cms-tab{flex-shrink:0;background:none;border:none;border-bottom:2px solid transparent;color:var(--t3);font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;padding:12px 14px;cursor:pointer;transition:all .2s;margin-bottom:-1px;white-space:nowrap}
 .cms-tab.active{color:var(--orange-l);border-bottom-color:var(--orange-l)}
 .cms-tab:hover:not(.active){color:var(--t2)}
-.cms-body{flex:1;overflow-y:auto;padding:20px 24px}
+.cms-body{flex:1;overflow-y:auto;padding:18px 22px}
 .cms-body::-webkit-scrollbar{width:4px}.cms-body::-webkit-scrollbar-thumb{background:var(--border-h);border-radius:4px}
-
-/* CMS PRIZE CARD */
-.cms-prize-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--rl);padding:16px;margin-bottom:12px;display:flex;gap:14px;align-items:flex-start}
-.cms-thumb-wrap{width:68px;height:94px;border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:32px;cursor:pointer;position:relative;overflow:hidden;border:2px dashed var(--border-h);transition:border-color .2s}
+.cms-prize-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--rl);padding:14px;margin-bottom:10px;display:flex;gap:12px;align-items:flex-start}
+.cms-thumb-wrap{width:62px;height:86px;border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:28px;cursor:pointer;position:relative;overflow:hidden;border:2px dashed var(--border-h);transition:border-color .2s}
 .cms-thumb-wrap:hover{border-color:var(--orange-l)}
 .cms-thumb-wrap img{width:100%;height:100%;object-fit:cover}
-.cms-thumb-ov{position:absolute;inset:0;background:rgba(0,0,0,.65);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .2s;font-size:11px;font-weight:700;color:#fff;flex-direction:column;gap:3px;text-align:center;padding:4px}
+.cms-thumb-ov{position:absolute;inset:0;background:rgba(0,0,0,.65);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .2s;font-size:10px;font-weight:700;color:#fff;flex-direction:column;gap:3px;text-align:center;padding:4px}
 .cms-thumb-wrap:hover .cms-thumb-ov{opacity:1}
 .cms-file-in{display:none}
-.cms-fields{flex:1;display:flex;flex-direction:column;gap:8px;min-width:0}
+.cms-fields{flex:1;display:flex;flex-direction:column;gap:7px;min-width:0}
 .cms-row2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.cms-field label{display:block;font-size:10px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
-.cms-field input,.cms-field select{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:8px 10px;color:var(--t1);font-family:'Nunito',sans-serif;font-size:13px;font-weight:600;outline:none;transition:border-color .2s}
+.cms-field label{display:block;font-size:10px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px}
+.cms-field input,.cms-field select{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:7px 10px;color:var(--t1);font-family:'Nunito',sans-serif;font-size:13px;font-weight:600;outline:none;transition:border-color .2s}
 .cms-field input:focus,.cms-field select:focus{border-color:rgba(249,115,22,.5)}
 .cms-field select option{background:var(--bg3)}
-.cms-card-btns{display:flex;gap:8px;margin-top:4px}
-.btn-save{background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.3);color:#86EFAC;font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;padding:6px 14px;border-radius:100px;cursor:pointer;transition:all .2s}
+.cms-card-btns{display:flex;gap:7px;margin-top:3px;flex-wrap:wrap}
+.btn-save{background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.3);color:#86EFAC;font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;padding:5px 13px;border-radius:100px;cursor:pointer;transition:all .2s}
 .btn-save:hover{background:rgba(34,197,94,.22)}
-.btn-del{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.25);color:#FCA5A5;font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;padding:6px 14px;border-radius:100px;cursor:pointer;transition:all .2s}
+.btn-del{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.25);color:#FCA5A5;font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;padding:5px 13px;border-radius:100px;cursor:pointer;transition:all .2s}
 .btn-del:hover{background:rgba(239,68,68,.2)}
-.cms-add-btn{width:100%;padding:14px;background:none;border:2px dashed var(--border-h);border-radius:var(--rl);color:var(--t3);font-family:'Nunito',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;margin-top:4px}
+.cms-add-btn{width:100%;padding:13px;background:none;border:2px dashed var(--border-h);border-radius:var(--rl);color:var(--t3);font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;margin-top:4px}
 .cms-add-btn:hover{border-color:var(--orange-l);color:var(--orange-l)}
-
-/* CMS DANGER */
-.danger-zone{margin-top:24px;padding:16px;background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.2);border-radius:var(--r)}
-.danger-title{font-size:11px;font-weight:700;color:#FCA5A5;text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
-.danger-btn{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);color:#FCA5A5;font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;padding:8px 16px;border-radius:100px;cursor:pointer;transition:all .2s;margin-right:8px;margin-top:4px;display:inline-block}
+.set-group{background:var(--bg2);border:1px solid var(--border);border-radius:var(--rl);padding:16px;margin-bottom:12px;display:flex;flex-direction:column;gap:9px}
+.set-group-title{font-size:11px;font-weight:900;color:var(--orange-l);text-transform:uppercase;letter-spacing:.09em;padding-bottom:9px;border-bottom:1px solid var(--border);margin-bottom:2px}
+.danger-zone{margin-top:20px;padding:14px;background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.2);border-radius:var(--r)}
+.danger-title{font-size:11px;font-weight:700;color:#FCA5A5;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}
+.danger-btn{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);color:#FCA5A5;font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;padding:7px 14px;border-radius:100px;cursor:pointer;transition:all .2s;margin-right:7px;margin-top:4px;display:inline-block}
 .danger-btn:hover{background:rgba(239,68,68,.2)}
-
-/* CMS HISTORY */
-.cms-hist-item{display:flex;align-items:center;gap:12px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:10px 14px;margin-bottom:8px}
-.cms-hist-num{font-size:11px;color:var(--t3);font-weight:700;width:28px;flex-shrink:0;text-align:center}
-.cms-hist-thumb{width:36px;height:50px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;overflow:hidden}
+.cms-gacha-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--rl);padding:14px 16px;margin-bottom:10px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all .2s}
+.cms-gacha-card:hover{border-color:var(--border-h)}
+.cms-gacha-card.active-g{border-color:rgba(249,115,22,.5);background:rgba(249,115,22,.05)}
+.cms-gacha-info{flex:1;min-width:0}
+.cms-gacha-name{font-size:14px;font-weight:700;color:var(--t1)}
+.cms-gacha-meta{font-size:11px;color:var(--t3);font-weight:600;margin-top:2px}
+.cms-gacha-switch{font-size:11px;font-weight:700;padding:5px 12px;border-radius:100px;border:1px solid rgba(249,115,22,.4);background:rgba(249,115,22,.1);color:var(--orange-l);cursor:pointer;font-family:'Nunito',sans-serif;transition:all .2s}
+.cms-gacha-switch:hover{background:rgba(249,115,22,.2)}
+.cms-hist-item{display:flex;align-items:center;gap:10px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:9px 12px;margin-bottom:7px}
+.cms-hist-num{font-size:11px;color:var(--t3);font-weight:700;width:26px;flex-shrink:0;text-align:center}
+.cms-hist-thumb{width:34px;height:46px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;overflow:hidden}
 .cms-hist-thumb img{width:100%;height:100%;object-fit:cover;border-radius:5px}
 .cms-hist-info{flex:1;min-width:0}
-.cms-hist-name{font-size:13px;font-weight:700;color:var(--t1);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.cms-hist-time{font-size:11px;color:var(--t3);font-weight:600;margin-top:2px}
+.cms-hist-name{font-size:12px;font-weight:700;color:var(--t1);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cms-hist-puller{font-size:10px;color:var(--orange-l);font-weight:600;margin-top:1px}
+.cms-hist-time{font-size:10px;color:var(--t3);font-weight:600;margin-top:1px}
 .cms-hist-empty{text-align:center;color:var(--t3);font-size:14px;font-weight:600;padding:40px 0}
 
-/* SETTINGS GROUPS */
-.set-group{background:var(--bg2);border:1px solid var(--border);border-radius:var(--rl);padding:18px;margin-bottom:14px;display:flex;flex-direction:column;gap:10px}
-.set-group-title{font-size:11px;font-weight:900;color:var(--orange-l);text-transform:uppercase;letter-spacing:.09em;padding-bottom:10px;border-bottom:1px solid var(--border);margin-bottom:2px}
-
 /* NOTIFICATION */
-.notif{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(120px);background:var(--bg2);border:1px solid var(--border-h);color:var(--t1);font-size:14px;font-weight:700;padding:13px 26px;border-radius:100px;z-index:300;transition:transform .35s ease;white-space:nowrap;box-shadow:0 8px 32px rgba(0,0,0,.5)}
+.notif{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(120px);background:var(--bg2);border:1px solid var(--border-h);color:var(--t1);font-size:14px;font-weight:700;padding:12px 24px;border-radius:100px;z-index:600;transition:transform .35s ease;white-space:nowrap;box-shadow:0 8px 32px rgba(0,0,0,.5)}
 .notif.show{transform:translateX(-50%) translateY(0)}
 
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
-@media(max-width:500px){.pull-price{font-size:17px}.prize-grid{grid-template-columns:repeat(auto-fill,minmax(118px,1fr))}.cms-panel{max-width:100%}.cms-row2{grid-template-columns:1fr}}
+@media(max-width:500px){.pull-price{font-size:17px}.prize-grid{grid-template-columns:repeat(auto-fill,minmax(115px,1fr))}.cms-panel{max-width:100%}.cms-row2{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 
-<div class="banner">
+<div class="app-header">
+  <div class="app-logo">🔥 CONEH GACHA</div>
+  <div class="header-right">
+    <button class="cms-fab" onclick="openCMS()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+      CMS
+    </button>
+  </div>
+</div>
+
+<div class="selector-wrap">
+  <div class="selector" id="selector"></div>
+</div>
+
+<div class="banner" id="banner">
   <div class="banner-bg"></div>
   <div class="particles" id="particles"></div>
   <div class="banner-content">
-    <div class="banner-badge" id="banner-badge">🔥 Gacha Pokémon Coneh</div>
-    <h1 class="banner-title" id="banner-headline">PSA 10<br>FIESTA</h1>
-    <p class="banner-sub" id="banner-sub">PSA 10 Graded Cards</p>
+    <div class="banner-badge" id="banner-badge"></div>
+    <h1 class="banner-title" id="banner-headline"></h1>
+    <p class="banner-sub" id="banner-sub"></p>
     <div class="banner-stats">
-      <div class="stat-pill"><span class="lbl">Per Pull</span><span class="val">Rp 15.000</span></div>
-      <div class="stat-pill"><span class="lbl">10× Pull</span><span class="val">Rp 135.000</span></div>
+      <div class="stat-pill"><span class="lbl">Per Pull</span><span class="val" id="banner-p1x">—</span></div>
+      <div class="stat-pill"><span class="lbl">10× Pull</span><span class="val" id="banner-p10x">—</span></div>
       <div class="stat-pill"><span class="lbl">Sisa Item</span><span class="val" id="banner-rem">—</span></div>
     </div>
   </div>
 </div>
 
-<div class="main">
-
+<div class="main" id="main-content">
   <div class="section-hd">
     <div class="section-title">🏆 Prize Pool</div>
     <div style="font-size:12px;color:var(--t3);font-weight:600">Odds berubah real-time</div>
@@ -229,17 +339,17 @@ body{font-family:'Nunito',sans-serif;background:var(--bg0);color:var(--t1);min-h
 
   <div class="pull-section">
     <div class="pull-buttons">
-      <button class="pull-btn btn-single" id="btn1" onclick="doPull(1)">
+      <button class="pull-btn btn-single" id="btn1" onclick="handlePull(1)">
         <span class="pull-lbl" id="lbl-1x">🎴 1× Pull</span>
         <span class="pull-price" id="price-1x">Rp 15.000</span>
       </button>
-      <button class="pull-btn btn-ten" id="btn10" onclick="doPull(10)">
+      <button class="pull-btn btn-ten" id="btn10" onclick="handlePull(10)">
         <span class="pull-savings" id="savings-badge">HEMAT 10%</span>
         <span class="pull-lbl" id="lbl-10x">🎴 10× Pull</span>
         <span class="pull-price" id="price-10x">Rp 135.000</span>
       </button>
     </div>
-    <div class="total-rem">Sisa hadiah: <strong id="rem-count">—</strong>&nbsp;/ <span id="total-count">—</span> item</div>
+    <div class="total-rem">Sisa hadiah: <strong id="rem-count">—</strong>&nbsp;/ <span id="total-count">—</span></div>
     <div class="stock-bar"><div class="stock-fill" id="stock-fill" style="width:0%"></div></div>
   </div>
 
@@ -251,50 +361,97 @@ body{font-family:'Nunito',sans-serif;background:var(--bg0);color:var(--t1);min-h
       </svg>
     </button>
     <div class="odds-wrap" id="odds-wrap">
-      <table class="odds-table">
-        <thead><tr><th>Hadiah</th><th>Tier</th><th>Stok</th><th>Peluang</th></tr></thead>
-        <tbody id="odds-tbody"></tbody>
-      </table>
+      <table class="odds-table"><thead><tr><th>Hadiah</th><th>Tier</th><th>Stok</th><th>Peluang</th></tr></thead>
+      <tbody id="odds-tbody"></tbody></table>
     </div>
   </div>
 
   <div>
     <div class="section-hd">
-      <div class="section-title">🎴 Riwayat Pullmu</div>
-      <button class="clear-history-btn" onclick="clearHistory()">🗑 Hapus Semua</button>
+      <div class="section-title">🎴 Riwayat Pull</div>
+      <button class="clear-hist-btn" onclick="clearHistory()">🗑 Hapus</button>
     </div>
     <div class="history-list" id="history-list"></div>
+    <div class="history-footer" id="history-footer" style="display:none"></div>
   </div>
-
 </div>
 
-<!-- MODAL -->
+<!-- NAME MODAL -->
+<div class="name-ov" id="name-ov">
+  <div class="name-box">
+    <div>
+      <div class="name-box-title" id="name-modal-title">🎴 Siapa yang Pull?</div>
+      <div class="name-box-sub" id="name-modal-sub">Nama wajib diisi untuk mencatat riwayat</div>
+    </div>
+    <input class="name-input" id="name-input" type="text" placeholder="Masukkan nama..." autocomplete="off" onkeydown="if(event.key==='Enter')confirmPull()">
+    <div class="name-actions">
+      <button class="btn-cancel" onclick="closeNameModal()">Batal</button>
+      <button class="btn-confirm-pull" id="btn-confirm-pull" onclick="confirmPull()">Tarik!</button>
+    </div>
+  </div>
+</div>
+
+<!-- CARD REVEAL MODAL -->
 <div class="modal-ov" id="modal">
   <div class="reveal-title" id="reveal-title">Tap kartu untuk membuka!</div>
   <div class="cards-grid" id="cards-grid"></div>
   <div class="modal-actions">
-    <button class="modal-btn mbtn-keep" onclick="revealAll()">🎴 Buka Semua Hadiah</button>
+    <button class="modal-btn mbtn-all" onclick="revealAll()">🎴 Buka Semua Hadiah</button>
     <button class="modal-btn mbtn-keep" onclick="closeModal()">✅ Simpan &amp; Tutup</button>
   </div>
 </div>
 
-<!-- CMS -->
-<button class="cms-fab" onclick="openCMS()">
-  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
-  CMS
-</button>
+<!-- SPOTLIGHT MODAL -->
+<div class="spotlight-ov" id="spotlight">
+  <div class="spotlight-bg" id="sp-bg"></div>
+  <div class="spotlight-sparks" id="sp-sparks"></div>
+  <div class="spotlight-box">
+    <div class="sp-label" id="sp-label">ULTRA RARE!</div>
+    <div class="sp-card-wrap" id="sp-card-wrap">
+      <div class="sp-card-inner" id="sp-card-inner"></div>
+    </div>
+    <div class="sp-prize-name" id="sp-prize-name"></div>
+    <div class="sp-tier-badge" id="sp-tier-badge"></div>
+    <div class="sp-puller" id="sp-puller"></div>
+    <button class="sp-close" onclick="closeSpotlight()">✨ Keren Banget!</button>
+  </div>
+</div>
 
+<!-- HISTORY SHEET -->
+<div class="hist-sheet-ov" id="hist-sheet">
+  <div class="hist-sheet">
+    <div class="hist-sheet-hd">
+      <div>
+        <div class="hist-sheet-title" id="hs-title">Semua Riwayat Pull</div>
+        <div style="font-size:12px;color:var(--t3);font-weight:600;margin-top:2px" id="hs-count"></div>
+      </div>
+      <button class="hist-sheet-close" onclick="closeHistSheet()">✕ Tutup</button>
+    </div>
+    <div class="hist-sheet-body">
+      <table class="hist-table">
+        <thead><tr><th class="th-img"></th><th>#</th><th>Waktu</th><th>Nama</th><th>Hadiah</th><th>Tier</th></tr></thead>
+        <tbody id="hs-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- CMS -->
 <div class="cms-ov" id="cms-ov">
   <div class="cms-backdrop" onclick="closeCMS()"></div>
   <div class="cms-panel">
     <div class="cms-header">
-      <div class="cms-title">⚙ Prize Manager</div>
+      <div>
+        <div class="cms-title">⚙ Prize Manager</div>
+        <div class="cms-active-gacha" id="cms-active-label">Mengelola: —</div>
+      </div>
       <button class="cms-close" onclick="closeCMS()">✕ Tutup</button>
     </div>
     <div class="cms-tabs">
-      <button class="cms-tab active" id="tab-prizes" onclick="switchTab('prizes',this)">🏆 Kelola Prize</button>
-      <button class="cms-tab" id="tab-history" onclick="switchTab('history',this)">📋 Riwayat Pull</button>
-      <button class="cms-tab" id="tab-settings" onclick="switchTab('settings',this)">✏️ Konten &amp; Harga</button>
+      <button class="cms-tab active" id="tab-prizes"  onclick="switchTab('prizes',this)">🏆 Prize</button>
+      <button class="cms-tab" id="tab-history" onclick="switchTab('history',this)">📋 Riwayat</button>
+      <button class="cms-tab" id="tab-settings" onclick="switchTab('settings',this)">✏️ Konten</button>
+      <button class="cms-tab" id="tab-gachas"  onclick="switchTab('gachas',this)">🎮 Gacha</button>
     </div>
     <div class="cms-body" id="cms-body"></div>
   </div>
@@ -303,11 +460,17 @@ body{font-family:'Nunito',sans-serif;background:var(--bg0);color:var(--t1);min-h
 <div class="notif" id="notif"></div>
 
 <script>
-/* ═══════════ STORAGE KEYS ═══════════ */
-const LS={prizes:'gp_prizes_v3',history:'gp_history_v3',totalOrig:'gp_total_v3',settings:'gp_settings_v3'};
+/* ═══════════ STORAGE ═══════════ */
+const LS={gachas:'cg_gachas_v1',histPfx:'cg_hist_v1_',lastPuller:'cg_puller_v1'};
 
-/* ═══════════ DEFAULT DATA ═══════════ */
-const DEFAULTS=[
+/* ═══════════ DEFAULTS ═══════════ */
+const DEF_SETTINGS={
+  badge:'🔥 Gacha Pokémon Coneh',titleLine1:'PSA 10',titleLine2:'FIESTA',
+  subtitle:'PSA 10 Graded Cards',pageTitle:'Coneh Gacha V.2',
+  price1x:15000,price10x:135000,savingsLabel:'HEMAT 10%',
+  cardBackEmoji:'🔥',cardBackText:'PSA 10 FIESTA',
+};
+const DEF_PRIZES=[
   {id:1,name:'Charizard VSTAR Rainbow',tier:'PSA 10',tc:'rainbow',rem:1,total:1,emoji:'🌈',image:'',cBg:'linear-gradient(135deg,#1a0030,#0d1a40,#0d3020)',cBorder:'rgba(168,85,247,.9)'},
   {id:2,name:'Charizard ex Gold Art',tier:'PSA 10',tc:'gold',rem:2,total:2,emoji:'⭐',image:'',cBg:'linear-gradient(135deg,#1a1200,#2a1a00)',cBorder:'rgba(234,179,8,.9)'},
   {id:3,name:'Charizard ex Alt Art',tier:'SSR',tc:'purple',rem:5,total:10,emoji:'🔮',image:'',cBg:'linear-gradient(135deg,#16062a,#0d1030)',cBorder:'rgba(168,85,247,.6)'},
@@ -316,22 +479,6 @@ const DEFAULTS=[
   {id:6,name:'Charizard Holo Rare',tier:'R',tc:'green',rem:30,total:80,emoji:'✨',image:'',cBg:'linear-gradient(135deg,#041a10,#061408)',cBorder:'rgba(34,197,94,.5)'},
   {id:7,name:'Charizard Common Pack',tier:'C',tc:'gray',rem:100,total:300,emoji:'🃏',image:'',cBg:'#1A1A2E',cBorder:'rgba(255,255,255,.15)'},
 ];
-
-/* ═══════════ DEFAULT SETTINGS ═══════════ */
-const DEFAULT_SETTINGS={
-  badge:'🔥 Gacha Pokémon Coneh',
-  titleLine1:'PSA 10',
-  titleLine2:'FIESTA',
-  subtitle:'PSA 10 Graded Cards',
-  pageTitle:'Ultimate Charizard Hunt Vol. 14 · Pokémon TCG',
-  price1x:15000,
-  price10x:135000,
-  savingsLabel:'HEMAT 10%',
-  cardBackEmoji:'🔥',
-  cardBackText:'PSA 10 FIESTA',
-};
-
-/* ═══════════ TIER STYLES ═══════════ */
 const TC={
   rainbow:{bg:'linear-gradient(135deg,#7C3AED,#3B82F6)',tx:'#fff',art:'rainbow-a',cBg:'linear-gradient(135deg,#1a0030,#0d1a40,#0d3020)',cBorder:'rgba(168,85,247,.9)'},
   gold:   {bg:'linear-gradient(135deg,#854d0e,#ca8a04)',tx:'#FDE047',art:'gold-a',cBg:'linear-gradient(135deg,#1a1200,#2a1a00)',cBorder:'rgba(234,179,8,.9)'},
@@ -340,46 +487,95 @@ const TC={
   green:  {bg:'rgba(34,197,94,.2)',tx:'#86EFAC',art:'green-a',cBg:'linear-gradient(135deg,#041a10,#061408)',cBorder:'rgba(34,197,94,.5)'},
   gray:   {bg:'rgba(255,255,255,.08)',tx:'#64748B',art:'gray-a',cBg:'#1A1A2E',cBorder:'rgba(255,255,255,.15)'},
 };
-
-/* ═══════════ STATE ═══════════ */
-let prizes=load(LS.prizes,DEFAULTS);
-let history=load(LS.history,[]);
-let settings=loadSettings();
-let totalOrig=parseInt(localStorage.getItem(LS.totalOrig))||DEFAULTS.reduce((s,p)=>s+p.total,0);
-let pulledNow=[];
-let cmsTab='prizes';
-let nextId=prizes.reduce((m,p)=>Math.max(m,p.id),0)+1;
-
-/* ═══════════ LOAD/SAVE ═══════════ */
-function load(key,def){try{const d=JSON.parse(localStorage.getItem(key));return Array.isArray(d)&&d.length?d:JSON.parse(JSON.stringify(def));}catch(e){return JSON.parse(JSON.stringify(def));}}
-function loadSettings(){try{const d=JSON.parse(localStorage.getItem(LS.settings));return d&&typeof d==='object'?{...DEFAULT_SETTINGS,...d}:{...DEFAULT_SETTINGS};}catch(e){return{...DEFAULT_SETTINGS};}}
-function savePrizes(){try{localStorage.setItem(LS.prizes,JSON.stringify(prizes));}catch(e){showNotif('⚠️ Storage penuh! Hapus beberapa gambar.');}}
-function saveHistory(){try{localStorage.setItem(LS.history,JSON.stringify(history));}catch(e){}}
-function saveTotalOrig(){localStorage.setItem(LS.totalOrig,totalOrig);}
-function saveSettings(){try{localStorage.setItem(LS.settings,JSON.stringify(settings));}catch(e){}}
+const HIGH_RARITY=['rainbow','gold'];
 
 /* ═══════════ HELPERS ═══════════ */
-const getTotal=()=>prizes.reduce((s,p)=>s+p.rem,0);
-const getOdds=p=>{const t=getTotal();return t?((p.rem/t)*100).toFixed(2):'0.00';};
-const fmtIDR=n=>n.toLocaleString('id-ID');
+function newGacha(id,name='Gacha Baru'){
+  return{id,settings:{...DEF_SETTINGS,titleLine2:name},prizes:JSON.parse(JSON.stringify(DEF_PRIZES))};
+}
 const tcOf=tc=>TC[tc]||TC.gray;
 const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-function fmtTime(ts){const d=new Date(ts),now=new Date(),diff=Math.floor((now-d)/1000);if(diff<60)return 'baru saja';if(diff<3600)return Math.floor(diff/60)+'m lalu';if(diff<86400)return Math.floor(diff/3600)+'j lalu';return d.toLocaleDateString('id-ID',{day:'numeric',month:'short'});}
+const fmtIDR=n=>n.toLocaleString('id-ID');
+function fmtTime(ts){const d=new Date(ts),now=new Date(),diff=Math.floor((now-d)/1000);if(diff<60)return'baru saja';if(diff<3600)return Math.floor(diff/60)+'m lalu';if(diff<86400)return Math.floor(diff/3600)+'j lalu';return d.toLocaleDateString('id-ID',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});}
+function fmtFull(ts){const d=new Date(ts);return d.toLocaleDateString('id-ID',{day:'numeric',month:'short',year:'numeric'})+' '+d.toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'});}
 
-/* ═══════════ RENDER PRIZES ═══════════ */
+/* ═══════════ STATE ═══════════ */
+let gachas,aIdx,aHist,histShow,pulledNow,spotQueue,cmsTab,nextGId,nextPId,pendingPullCount;
+
+/* ═══════════ LOAD / SAVE ═══════════ */
+function loadGachas(){
+  try{const d=JSON.parse(localStorage.getItem(LS.gachas));return Array.isArray(d)&&d.length?d:[newGacha(1)];}
+  catch(e){return[newGacha(1)];}
+}
+function saveGachas(){try{localStorage.setItem(LS.gachas,JSON.stringify(gachas));}catch(e){showNotif('⚠️ Storage penuh!');}}
+function loadHistory(gid){try{const d=JSON.parse(localStorage.getItem(LS.histPfx+gid));return Array.isArray(d)?d:[];}catch(e){return[];}}
+function saveHistory(){try{localStorage.setItem(LS.histPfx+gachas[aIdx].id,JSON.stringify(aHist));}catch(e){}}
+
+/* ═══════════ ACTIVE GACHA ═══════════ */
+const AG=()=>gachas[aIdx];
+const AS=()=>AG().settings;
+const AP=()=>AG().prizes;
+
+/* ═══════════ COMPUTED ═══════════ */
+const getTotal=()=>AP().reduce((s,p)=>s+p.rem,0);
+const getOdds=p=>{const t=getTotal();return t?((p.rem/t)*100).toFixed(2):'0.00';};
+const totalOrig=()=>AP().reduce((s,p)=>s+p.total,0);
+
+/* ═══════════ RENDER: SELECTOR ═══════════ */
+function renderSelector(){
+  const el=document.getElementById('selector');
+  el.innerHTML=gachas.map((g,i)=>{
+    const rem=g.prizes.reduce((s,p)=>s+p.rem,0);
+    return`<button class="g-tab${i===aIdx?' active':''}" onclick="selectGacha(${i})">
+      <span class="g-tab-name">${esc(g.settings.titleLine1)} ${esc(g.settings.titleLine2)}</span>
+      <span class="g-tab-rem">${rem} item tersisa</span>
+    </button>`;
+  }).join('')+`<button class="g-tab-add" onclick="addGacha()" title="Tambah Gacha Baru">＋</button>`;
+}
+
+function selectGacha(i){
+  aIdx=i;
+  aHist=loadHistory(AG().id);
+  histShow=10;
+  updateUI();
+  document.getElementById('selector').scrollLeft=0;
+}
+
+function addGacha(){
+  const id=nextGId++;
+  gachas.push(newGacha(id,'Gacha '+id));
+  saveGachas();
+  selectGacha(gachas.length-1);
+  showNotif('➕ Gacha baru ditambahkan!');
+}
+
+/* ═══════════ RENDER: BANNER + SETTINGS ═══════════ */
+function applySettings(){
+  const s=AS();
+  document.getElementById('banner-badge').textContent=s.badge;
+  document.getElementById('banner-headline').innerHTML=esc(s.titleLine1)+'<br>'+esc(s.titleLine2);
+  document.getElementById('banner-sub').textContent=s.subtitle;
+  document.title=s.pageTitle;
+  document.getElementById('price-1x').textContent='Rp '+fmtIDR(s.price1x);
+  document.getElementById('price-10x').textContent='Rp '+fmtIDR(s.price10x);
+  document.getElementById('savings-badge').textContent=s.savingsLabel;
+  document.getElementById('banner-p1x').textContent='Rp '+fmtIDR(s.price1x);
+  document.getElementById('banner-p10x').textContent='Rp '+fmtIDR(s.price10x);
+}
+
+/* ═══════════ RENDER: PRIZES ═══════════ */
 function renderPrizes(){
   const g=document.getElementById('prize-grid');
-  if(!prizes.length){g.innerHTML='<div style="grid-column:1/-1;text-align:center;color:var(--t3);padding:28px;font-size:14px;font-weight:600">Belum ada prize. Tambah lewat CMS!</div>';return;}
-  g.innerHTML=prizes.map(p=>{
-    const t=tcOf(p.tc);
-    const sc=p.rem<=1?'st-low':p.rem<=5?'st-mid':'st-ok';
-    const artContent=p.image?`<img src="${p.image}" alt="${esc(p.name)}">`:`${p.emoji}`;
-    return `<div class="pcard ${p.tc}${p.rem===0?' sold-out':''}">
+  if(!AP().length){g.innerHTML='<div style="grid-column:1/-1;text-align:center;color:var(--t3);padding:28px;font-size:14px;font-weight:600">Belum ada prize. Tambah di CMS!</div>';return;}
+  g.innerHTML=AP().map(p=>{
+    const t=tcOf(p.tc),sc=p.rem<=1?'st-low':p.rem<=5?'st-mid':'st-ok';
+    const art=p.image?`<img src="${p.image}" alt="${esc(p.name)}">`:`${p.emoji}`;
+    return`<div class="pcard ${p.tc}${p.rem===0?' sold-out':''}">
       ${p.rem===0?'<div class="sold-out-badge">Habis</div>':''}
       <div class="card-inner">
         <div class="card-art ${p.image?'':t.art}">
           <div class="tier-badge" style="background:${t.bg};color:${t.tx}">${esc(p.tier)}</div>
-          ${artContent}
+          ${art}
         </div>
         <div class="prize-name">${esc(p.name)}</div>
         <div class="prize-odds">${getOdds(p)}% peluang</div>
@@ -389,41 +585,106 @@ function renderPrizes(){
   }).join('');
 }
 
-/* ═══════════ RENDER ODDS ═══════════ */
+/* ═══════════ RENDER: ODDS ═══════════ */
 function renderOdds(){
-  document.getElementById('odds-tbody').innerHTML=prizes.map(p=>{
-    const t=tcOf(p.tc);
-    const col=p.tc==='rainbow'?'#A855F7':p.tc==='gold'?'#EAB308':'#CBD5E1';
-    const thumb=p.image?`<img src="${p.image}" style="width:20px;height:28px;border-radius:3px;object-fit:cover;vertical-align:middle;margin-right:5px">`:p.emoji+' ';
-    return `<tr><td>${thumb}${esc(p.name)}</td>
+  document.getElementById('odds-tbody').innerHTML=AP().map(p=>{
+    const t=tcOf(p.tc),col=p.tc==='rainbow'?'#A855F7':p.tc==='gold'?'#EAB308':'#CBD5E1';
+    const th=p.image?`<img src="${p.image}" style="width:18px;height:25px;border-radius:3px;object-fit:cover;vertical-align:middle;margin-right:5px">`:`${p.emoji} `;
+    return`<tr><td>${th}${esc(p.name)}</td>
       <td><span style="background:${t.bg};color:${t.tx};padding:2px 8px;border-radius:100px;font-size:11px;font-weight:700">${esc(p.tier)}</span></td>
-      <td>${p.rem} / ${p.total}</td>
+      <td>${p.rem}/${p.total}</td>
       <td style="font-weight:700;color:${col}">${getOdds(p)}%</td></tr>`;
   }).join('');
 }
 
-/* ═══════════ RENDER HISTORY ═══════════ */
+/* ═══════════ RENDER: HISTORY ═══════════ */
 function renderHistory(){
   const el=document.getElementById('history-list');
-  if(!history.length){el.innerHTML='<div class="history-empty">Belum ada pull. Coba tarik kartu pertamamu! 🎴</div>';return;}
-  el.innerHTML=history.slice().reverse().map((h,i)=>{
-    const t=tcOf(h.tc);
-    const thumb=h.image?`<div class="h-thumb"><img src="${h.image}" alt="${esc(h.name)}"></div>`:`<div class="h-thumb" style="background:${t.bg};border-radius:6px">${h.emoji}</div>`;
-    return `<div class="history-item">
+  const footer=document.getElementById('history-footer');
+  if(!aHist.length){
+    el.innerHTML='<div class="history-empty">Belum ada pull. Tarik kartu pertamamu! 🎴</div>';
+    footer.style.display='none';return;
+  }
+  const rev=[...aHist].reverse();
+  const shown=rev.slice(0,histShow);
+  const t=tcOf;
+  el.innerHTML=shown.map((h,i)=>{
+    const tc=t(h.tc);
+    const thumb=h.image?`<div class="h-thumb"><img src="${h.image}" alt="${esc(h.name)}"></div>`:`<div class="h-thumb" style="background:${tc.bg};border-radius:6px">${h.emoji}</div>`;
+    return`<div class="history-item">
       ${thumb}
       <div class="h-info">
         <div class="h-name">${esc(h.name)}</div>
-        <span class="h-tier" style="background:${t.bg};color:${t.tx}">${esc(h.tier)}</span>
-        <div class="h-pullnum">Pull #${history.length-i}</div>
+        <div class="h-puller">👤 ${esc(h.puller||'—')}</div>
+        <span class="h-tier" style="background:${tc.bg};color:${tc.tx}">${esc(h.tier)}</span>
       </div>
-      <div class="h-time">${fmtTime(h.ts)}</div>
+      <div style="text-align:right;flex-shrink:0">
+        <div class="h-pullnum">#${aHist.length-i}</div>
+        <div class="h-time">${fmtTime(h.ts)}</div>
+      </div>
     </div>`;
   }).join('');
+
+  // Footer buttons
+  const remaining=aHist.length-histShow;
+  let btns='';
+  if(remaining>0) btns+=`<button class="hist-btn" onclick="loadMore()">+ Lihat 10 Lagi (${remaining} tersisa)</button>`;
+  if(aHist.length>10) btns+=`<button class="hist-btn primary" onclick="showHistSheet()">📋 Lihat Semua (${aHist.length})</button>`;
+  footer.innerHTML=btns;
+  footer.style.display=btns?'flex':'none';
 }
 
-/* ═══════════ PULL LOGIC ═══════════ */
+function loadMore(){histShow+=10;renderHistory();}
+
+/* ═══════════ HISTORY SHEET ═══════════ */
+function showHistSheet(){
+  const t=tcOf;
+  document.getElementById('hs-title').textContent=`Semua Riwayat — ${AS().titleLine1} ${AS().titleLine2}`;
+  document.getElementById('hs-count').textContent=`${aHist.length} total pull`;
+  document.getElementById('hs-tbody').innerHTML=[...aHist].reverse().map((h,i)=>{
+    const tc=t(h.tc);
+    const thumb=h.image?`<div class="tbl-thumb"><img src="${h.image}"></div>`:`<div class="tbl-thumb" style="background:${tc.bg};border-radius:4px">${h.emoji}</div>`;
+    return`<tr>
+      <td>${thumb}</td>
+      <td style="color:var(--t3)">#${aHist.length-i}</td>
+      <td style="white-space:nowrap;font-size:11px">${fmtFull(h.ts)}</td>
+      <td style="font-weight:700;color:var(--orange-l)">${esc(h.puller||'—')}</td>
+      <td>${esc(h.name)}</td>
+      <td><span style="background:${tc.bg};color:${tc.tx};padding:2px 8px;border-radius:100px;font-size:10px;font-weight:700">${esc(h.tier)}</span></td>
+    </tr>`;
+  }).join('');
+  document.getElementById('hist-sheet').classList.add('active');
+}
+function closeHistSheet(){document.getElementById('hist-sheet').classList.remove('active');}
+
+/* ═══════════ PULL FLOW ═══════════ */
+function handlePull(count){
+  if(getTotal()===0){showNotif('❌ Semua hadiah sudah habis!');return;}
+  pendingPullCount=count;
+  const s=AS();
+  document.getElementById('name-modal-title').textContent=count===1?'🎴 Siapa yang Pull?':`🎴 Siapa yang Pull 10×?`;
+  document.getElementById('name-modal-sub').textContent=`Tarik ${count}× — Rp ${fmtIDR(count===1?s.price1x:s.price10x)}`;
+  const btn=document.getElementById('btn-confirm-pull');
+  btn.textContent=count===1?`Tarik! 🎴`:`Tarik 10×! 🎴`;
+  btn.className='btn-confirm-pull'+(count===10?' ten':'');
+  document.getElementById('name-input').value=localStorage.getItem(LS.lastPuller)||'';
+  document.getElementById('name-ov').classList.add('active');
+  setTimeout(()=>document.getElementById('name-input').focus(),300);
+}
+
+function closeNameModal(){document.getElementById('name-ov').classList.remove('active');}
+
+function confirmPull(){
+  const inp=document.getElementById('name-input');
+  const name=inp.value.trim();
+  if(!name){inp.classList.add('shake');setTimeout(()=>inp.classList.remove('shake'),400);inp.focus();return;}
+  localStorage.setItem(LS.lastPuller,name);
+  closeNameModal();
+  doPull(pendingPullCount,name);
+}
+
 function pickPrize(){
-  const avail=prizes.filter(p=>p.rem>0);
+  const avail=AP().filter(p=>p.rem>0);
   if(!avail.length)return null;
   const total=avail.reduce((s,p)=>s+p.rem,0);
   let r=Math.floor(Math.random()*total);
@@ -431,29 +692,30 @@ function pickPrize(){
   return avail[avail.length-1];
 }
 
-function doPull(count){
-  const rem=getTotal();
-  if(rem===0){showNotif('❌ Semua hadiah sudah habis!');return;}
-  const actual=Math.min(count,rem);
+function doPull(count,name){
+  const actual=Math.min(count,getTotal());
   const pulled=[];
   for(let i=0;i<actual;i++){const p=pickPrize();if(p){p.rem--;pulled.push({...p});}}
-  pulled.forEach(p=>history.push({id:p.id,name:p.name,tier:p.tier,tc:p.tc,emoji:p.emoji,image:p.image||'',ts:Date.now()}));
+  pulled.forEach(p=>aHist.push({id:p.id,name:p.name,tier:p.tier,tc:p.tc,emoji:p.emoji,image:p.image||'',puller:name,ts:Date.now()}));
   saveHistory();
-  savePrizes();
+  saveGachas();
   pulledNow=pulled;
+  spotQueue=pulled.filter(p=>HIGH_RARITY.includes(p.tc)).map(p=>({...p,puller:name}));
+  histShow=Math.max(histShow,10);
   updateUI();
-  showModal(pulled);
+  showModal(pulled,name);
 }
 
-/* ═══════════ MODAL ═══════════ */
-function showModal(pulled){
+/* ═══════════ CARD REVEAL MODAL ═══════════ */
+function showModal(pulled,name){
   document.getElementById('reveal-title').textContent=pulled.length===1?'Tap kartu untuk membuka! 🔥':`${pulled.length} hadiah menunggumu! ✨`;
   document.getElementById('cards-grid').innerHTML=pulled.map((p,i)=>{
     const t=tcOf(p.tc);
     const front=p.image?`<img class="cfront-img" src="${p.image}" alt="${esc(p.name)}">`:`<div class="cfront-emoji">${p.emoji}</div>`;
-    return `<div class="rcard" onclick="flipCard(${i})" id="rc${i}">
+    const s=AS();
+    return`<div class="rcard" onclick="flipCard(${i},this)" id="rc${i}">
       <div class="rcard-inner" id="rci${i}">
-        <div class="cface cback"><span class="cback-emoji">${settings.cardBackEmoji}</span><span class="cback-logo">${esc(settings.cardBackText)}</span></div>
+        <div class="cface cback"><span class="cback-emoji">${s.cardBackEmoji}</span><span class="cback-logo">${esc(s.cardBackText)}</span></div>
         <div class="cface cfront" style="background:${p.cBg||t.cBg};border:2px solid ${p.cBorder||t.cBorder}">
           ${front}<div class="cfront-name">${esc(p.name)}</div>
           <div class="cfront-tier" style="background:${t.bg};color:${t.tx}">${esc(p.tier)}</div>
@@ -462,56 +724,130 @@ function showModal(pulled){
     </div>`;
   }).join('');
   document.getElementById('modal').classList.add('active');
-  if(pulled.length===1)setTimeout(()=>flipCard(0),550);
+  if(pulled.length===1)setTimeout(()=>flipCard(0,document.getElementById('rc0')),550);
 }
 
-function flipCard(i){
-  const el=document.getElementById('rci'+i);
-  if(el)el.classList.add('flipped');
-  setTimeout(()=>{
-    if(pulledNow.every((_,j)=>{const e=document.getElementById('rci'+j);return e&&e.classList.contains('flipped');}))
-      document.getElementById('reveal-title').textContent='🎉 Selamat! Hadiahmu sudah siap dikirim!';
-  },700);
+function flipCard(i,cardEl){
+  const inner=document.getElementById('rci'+i);
+  if(!inner||inner.classList.contains('flipped')||inner.classList.contains('high-rarity-flipped'))return;
+  const p=pulledNow[i];
+  const isHigh=HIGH_RARITY.includes(p.tc);
+
+  if(isHigh){
+    // Blast from card center
+    const rect=cardEl.getBoundingClientRect();
+    fireBurst(rect.left+rect.width/2,rect.top+rect.height/2,p.tc);
+    inner.classList.add('high-rarity-flipped');
+    if(p.tc==='rainbow')cardEl.classList.add('glow-rainbow');
+    else if(p.tc==='gold')cardEl.classList.add('glow-gold');
+    setTimeout(()=>{
+      const puller=aHist.length?aHist[aHist.length-1].puller:'—';
+      showSpotlight(p,puller);
+    },400);
+  }else{
+    inner.classList.add('flipped');
+    checkAllFlipped();
+  }
 }
 
-function revealAll(){pulledNow.forEach((_,i)=>setTimeout(()=>flipCard(i),i*180));}
+function checkAllFlipped(){
+  const allDone=pulledNow.every((_,j)=>{const e=document.getElementById('rci'+j);return e&&(e.classList.contains('flipped')||e.classList.contains('high-rarity-flipped'));});
+  if(allDone)document.getElementById('reveal-title').textContent='🎉 Selamat! Hadiahmu sudah siap dikirim!';
+}
+
+function revealAll(){
+  pulledNow.forEach((_,i)=>setTimeout(()=>{
+    const el=document.getElementById('rc'+i);
+    if(el)flipCard(i,el);
+  },i*200));
+}
+
 function closeModal(){document.getElementById('modal').classList.remove('active');}
 
-/* ═══════════ UI HELPERS ═══════════ */
-function toggleOdds(){document.getElementById('odds-wrap').classList.toggle('open');document.getElementById('odds-chev').classList.toggle('open');}
-function clearHistory(){if(!history.length)return;if(!confirm('Hapus semua riwayat pull?'))return;history=[];saveHistory();renderHistory();showNotif('🗑 Riwayat dihapus.');}
-
-/* ═══════════ APPLY SETTINGS TO DOM ═══════════ */
-function applySettings(){
-  const s=settings;
-  const badge=document.getElementById('banner-badge');
-  if(badge) badge.textContent=s.badge;
-  const hl=document.getElementById('banner-headline');
-  if(hl) hl.innerHTML=esc(s.titleLine1)+'<br>'+esc(s.titleLine2);
-  const sub=document.getElementById('banner-sub');
-  if(sub) sub.textContent=s.subtitle;
-  document.title=s.pageTitle;
-  const p1=document.getElementById('price-1x');
-  if(p1) p1.textContent='Rp '+fmtIDR(s.price1x);
-  const p10=document.getElementById('price-10x');
-  if(p10) p10.textContent='Rp '+fmtIDR(s.price10x);
-  const sav=document.getElementById('savings-badge');
-  if(sav) sav.textContent=s.savingsLabel;
+/* ═══════════ BLAST + SHOCKWAVE ═══════════ */
+function fireBurst(cx,cy,tc){
+  const colors=tc==='rainbow'?['#A855F7','#60A5FA','#EC4899','#34D399','#F59E0B']:['#EAB308','#FB923C','#FDE047','#F97316','#FCD34D'];
+  // Shockwave
+  const sw=document.createElement('div');sw.className='shockwave';
+  sw.style.cssText=`left:${cx}px;top:${cy}px;--sw-color:${colors[0]}`;
+  document.body.appendChild(sw);setTimeout(()=>sw.remove(),700);
+  // Particles
+  for(let i=0;i<28;i++){
+    const p=document.createElement('div');p.className='blast-p';
+    const angle=(i/28)*Math.PI*2+Math.random()*.3;
+    const dist=70+Math.random()*100;
+    const dx=Math.cos(angle)*dist,dy=Math.sin(angle)*dist;
+    const size=4+Math.random()*8,dur=0.5+Math.random()*0.5;
+    p.style.cssText=`left:${cx}px;top:${cy}px;width:${size}px;height:${size}px;background:${colors[i%colors.length]};animation:blast ${dur}s ease-out forwards;--dx:${dx}px;--dy:${dy}px;`;
+    document.body.appendChild(p);setTimeout(()=>p.remove(),1000);
+  }
+  // Screen flash
+  const fl=document.createElement('div');
+  fl.style.cssText='position:fixed;inset:0;background:rgba(255,255,255,.15);z-index:497;pointer-events:none;animation:blast .3s ease-out forwards;--dx:0px;--dy:0px';
+  document.body.appendChild(fl);setTimeout(()=>fl.remove(),350);
 }
 
+/* ═══════════ SPOTLIGHT ═══════════ */
+function showSpotlight(p,pullerName){
+  const t=tcOf(p.tc);
+  const sp=document.getElementById('spotlight');
+  const bg=document.getElementById('sp-bg');
+  bg.className='spotlight-bg '+p.tc;
+  document.getElementById('sp-label').className='sp-label '+p.tc;
+  document.getElementById('sp-label').textContent=p.tc==='rainbow'?'⚡ ULTRA RARE! ⚡':'✨ RARE! ✨';
+  const wrap=document.getElementById('sp-card-wrap');
+  wrap.className='sp-card-wrap '+p.tc;
+  const inner=document.getElementById('sp-card-inner');
+  inner.innerHTML=p.image?`<img src="${p.image}" alt="${esc(p.name)}" style="width:100%;height:100%;object-fit:cover">`:`<span style="font-size:80px">${p.emoji}</span>`;
+  document.getElementById('sp-prize-name').textContent=p.name;
+  const tb=document.getElementById('sp-tier-badge');
+  tb.textContent=p.tier;tb.style.background=t.bg;tb.style.color=t.tx;
+  document.getElementById('sp-puller').innerHTML=`Ditarik oleh <span>${esc(pullerName)}</span>`;
+  // Sparks
+  const sparks=document.getElementById('sp-sparks');
+  sparks.innerHTML='';
+  const cols=p.tc==='rainbow'?['#A855F7','#60A5FA','#EC4899','#34D399','#F59E0B']:['#EAB308','#FB923C','#FDE047','#FBBF24','#F97316'];
+  for(let i=0;i<20;i++){
+    const s=document.createElement('div');s.className='spark';
+    const sz=4+Math.random()*8,x=Math.random()*100,delay=Math.random()*3,dur=2+Math.random()*3;
+    s.style.cssText=`width:${sz}px;height:${sz}px;left:${x}%;background:${cols[i%cols.length]};animation-delay:${delay}s;animation-duration:${dur}s;border-radius:50%`;
+    sparks.appendChild(s);
+  }
+  sp.classList.add('active');
+}
+
+function closeSpotlight(){
+  document.getElementById('spotlight').classList.remove('active');
+  checkAllFlipped();
+}
+
+/* ═══════════ ODDS TOGGLE ═══════════ */
+function toggleOdds(){document.getElementById('odds-wrap').classList.toggle('open');document.getElementById('odds-chev').classList.toggle('open');}
+
+/* ═══════════ CLEAR HISTORY ═══════════ */
+function clearHistory(){
+  if(!aHist.length)return;
+  if(!confirm('Hapus semua riwayat pull gacha ini?'))return;
+  aHist=[];saveHistory();histShow=10;renderHistory();showNotif('🗑 Riwayat dihapus.');
+}
+
+/* ═══════════ UPDATE UI ═══════════ */
 function updateUI(){
-  const rem=getTotal();
-  const pct=totalOrig>0?(rem/totalOrig*100):0;
+  const rem=getTotal(),orig=totalOrig(),pct=orig>0?(rem/orig*100):0;
   document.getElementById('rem-count').textContent=rem;
-  document.getElementById('total-count').textContent=totalOrig;
+  document.getElementById('total-count').textContent=orig;
   document.getElementById('banner-rem').textContent=rem;
   document.getElementById('stock-fill').style.width=Math.min(100,pct).toFixed(1)+'%';
   document.getElementById('btn1').disabled=rem===0;
   document.getElementById('btn10').disabled=rem===0;
   applySettings();
-  renderPrizes();renderOdds();renderHistory();
+  renderSelector();
+  renderPrizes();
+  renderOdds();
+  renderHistory();
 }
 
+/* ═══════════ NOTIFICATION ═══════════ */
 function showNotif(msg){
   const el=document.getElementById('notif');
   el.textContent=msg;el.classList.add('show');
@@ -519,222 +855,221 @@ function showNotif(msg){
 }
 
 /* ═══════════ CMS ═══════════ */
-function openCMS(){document.getElementById('cms-ov').classList.add('active');renderCMSTab();}
-function closeCMS(){document.getElementById('cms-ov').classList.remove('active');}
-
-function switchTab(tab,btn){
-  cmsTab=tab;
-  document.querySelectorAll('.cms-tab').forEach(t=>t.classList.remove('active'));
-  btn.classList.add('active');
+function openCMS(){
+  document.getElementById('cms-active-label').textContent=`Mengelola: ${AS().titleLine1} ${AS().titleLine2}`;
+  document.getElementById('cms-ov').classList.add('active');
   renderCMSTab();
 }
-
+function closeCMS(){document.getElementById('cms-ov').classList.remove('active');}
+function switchTab(tab,btn){cmsTab=tab;document.querySelectorAll('.cms-tab').forEach(t=>t.classList.remove('active'));btn.classList.add('active');renderCMSTab();}
 function renderCMSTab(){
   if(cmsTab==='prizes')renderCMSPrizes();
   else if(cmsTab==='history')renderCMSHistory();
-  else renderCMSSettings();
+  else if(cmsTab==='settings')renderCMSSettings();
+  else renderCMSGachas();
 }
 
-/* ═══════════ CMS PRIZES ═══════════ */
+/* CMS PRIZES */
 function renderCMSPrizes(){
   const body=document.getElementById('cms-body');
   const tcOpts=['rainbow','gold','purple','blue','green','gray'].map(t=>`<option value="${t}">${t[0].toUpperCase()+t.slice(1)}</option>`).join('');
-
-  body.innerHTML=prizes.map(p=>{
-    const thumbInner=p.image?`<img src="${p.image}" alt="${esc(p.name)}">`:`<span>${p.emoji}</span>`;
-    return `<div class="cms-prize-card" id="cpc-${p.id}">
-      <div class="cms-thumb-wrap" onclick="triggerUpload(${p.id})" title="Klik untuk upload gambar">
-        ${thumbInner}
-        <div class="cms-thumb-ov">📷<br><small>Upload<br>Gambar</small></div>
+  body.innerHTML=AP().map(p=>{
+    const ti=p.image?`<img src="${p.image}" alt="${esc(p.name)}">`:`<span>${p.emoji}</span>`;
+    return`<div class="cms-prize-card" id="cpc-${p.id}">
+      <div class="cms-thumb-wrap" onclick="triggerUpload(${p.id})" title="Upload gambar">
+        ${ti}<div class="cms-thumb-ov">📷<br><small>Upload</small></div>
         <input class="cms-file-in" type="file" accept="image/*" id="fi-${p.id}" onchange="handleUpload(${p.id},this)">
       </div>
       <div class="cms-fields">
-        <div class="cms-field"><label>Nama Prize</label><input type="text" id="fn-${p.id}" value="${esc(p.name)}" placeholder="Nama hadiah"></div>
+        <div class="cms-field"><label>Nama Prize</label><input type="text" id="fn-${p.id}" value="${esc(p.name)}"></div>
         <div class="cms-row2">
-          <div class="cms-field"><label>Label Tier</label><input type="text" id="ft-${p.id}" value="${esc(p.tier)}" placeholder="PSA 10, SSR..."></div>
-          <div class="cms-field"><label>Warna Tier</label><select id="fc-${p.id}">${tcOpts.replace(`value="${p.tc}"`,`value="${p.tc}" selected`)}</select></div>
+          <div class="cms-field"><label>Label Tier</label><input type="text" id="ft-${p.id}" value="${esc(p.tier)}"></div>
+          <div class="cms-field"><label>Warna</label><select id="fc-${p.id}">${tcOpts.replace(`value="${p.tc}"`,`value="${p.tc}" selected`)}</select></div>
         </div>
         <div class="cms-row2">
-          <div class="cms-field"><label>Stok Sisa</label><input type="number" id="fr-${p.id}" value="${p.rem}" min="0"></div>
+          <div class="cms-field"><label>Sisa Stok</label><input type="number" id="fr-${p.id}" value="${p.rem}" min="0"></div>
           <div class="cms-field"><label>Total Stok</label><input type="number" id="fo-${p.id}" value="${p.total}" min="1"></div>
         </div>
-        <div class="cms-field"><label>Emoji (fallback)</label><input type="text" id="fe-${p.id}" value="${esc(p.emoji)}" placeholder="🎴"></div>
+        <div class="cms-field"><label>Emoji (fallback)</label><input type="text" id="fe-${p.id}" value="${esc(p.emoji)}"></div>
         <div class="cms-card-btns">
           <button class="btn-save" onclick="savePrize(${p.id})">✓ Simpan</button>
           <button class="btn-del" onclick="deletePrize(${p.id})">✕ Hapus</button>
-          ${p.image?`<button class="btn-del" onclick="clearImg(${p.id})" style="font-size:11px">🗑 Hapus Foto</button>`:''}
+          ${p.image?`<button class="btn-del" onclick="clearImg(${p.id})" style="font-size:11px">🗑 Foto</button>`:''}
         </div>
       </div>
     </div>`;
   }).join('');
-
   body.innerHTML+=`<button class="cms-add-btn" onclick="addPrize()">+ Tambah Prize Baru</button>`;
-  body.innerHTML+=`<div class="danger-zone"><div class="danger-title">⚠ Zona Berbahaya</div>
-    <button class="danger-btn" onclick="resetToDefault()">Reset Prize ke Default</button></div>`;
+  body.innerHTML+=`<div class="danger-zone"><div class="danger-title">⚠ Zona Berbahaya</div><button class="danger-btn" onclick="resetPrizesToDefault()">Reset Prize ke Default</button></div>`;
 }
 
 function triggerUpload(id){document.getElementById('fi-'+id).click();}
-
 function handleUpload(id,input){
   if(!input.files||!input.files[0])return;
-  const file=input.files[0];
-  // Warn if file is large
-  if(file.size>500000)showNotif('⚠️ File besar, mungkin gagal tersimpan. Gunakan gambar < 500KB.');
+  if(input.files[0].size>600000){showNotif('⚠️ Gambar terlalu besar (maks ~600KB)');return;}
   const reader=new FileReader();
-  reader.onload=e=>{
-    const p=prizes.find(x=>x.id===id);
-    if(!p)return;
-    p.image=e.target.result;
-    try{savePrizes();}catch(ex){p.image='';showNotif('❌ Gambar terlalu besar untuk disimpan.');return;}
-    renderCMSPrizes();updateUI();
-    showNotif('🖼 Gambar berhasil diupload!');
-  };
-  reader.readAsDataURL(file);
+  reader.onload=e=>{const p=AP().find(x=>x.id===id);if(!p)return;p.image=e.target.result;try{saveGachas();}catch(ex){p.image='';showNotif('❌ Gambar terlalu besar!');return;}renderCMSPrizes();updateUI();showNotif('🖼 Gambar diupload!');};
+  reader.readAsDataURL(input.files[0]);
 }
-
-function clearImg(id){
-  const p=prizes.find(x=>x.id===id);
-  if(p){p.image='';savePrizes();renderCMSPrizes();updateUI();showNotif('🗑 Foto dihapus.');}
-}
+function clearImg(id){const p=AP().find(x=>x.id===id);if(p){p.image='';saveGachas();renderCMSPrizes();updateUI();showNotif('🗑 Foto dihapus.');}}
 
 function savePrize(id){
-  const p=prizes.find(x=>x.id===id);
-  if(!p)return;
+  const p=AP().find(x=>x.id===id);if(!p)return;
   const name=document.getElementById('fn-'+id).value.trim();
-  if(!name){showNotif('⚠️ Nama prize tidak boleh kosong!');return;}
-  const tc=document.getElementById('fc-'+id).value;
-  const t=tcOf(tc);
-  Object.assign(p,{
-    name,
-    tier:document.getElementById('ft-'+id).value.trim()||p.tier,
-    tc,
+  if(!name){showNotif('⚠️ Nama tidak boleh kosong!');return;}
+  const tc=document.getElementById('fc-'+id).value,t=tcOf(tc);
+  Object.assign(p,{name,tier:document.getElementById('ft-'+id).value.trim()||p.tier,tc,
     rem:Math.max(0,parseInt(document.getElementById('fr-'+id).value)||0),
     total:Math.max(1,parseInt(document.getElementById('fo-'+id).value)||1),
     emoji:document.getElementById('fe-'+id).value.trim()||'🎴',
-    cBg:t.cBg,cBorder:t.cBorder,
-  });
-  totalOrig=prizes.reduce((s,x)=>s+x.total,0);
-  saveTotalOrig();savePrizes();updateUI();
-  showNotif(`✅ "${name}" disimpan!`);
+    cBg:t.cBg,cBorder:t.cBorder});
+  saveGachas();updateUI();showNotif(`✅ "${name}" disimpan!`);
 }
 
 function deletePrize(id){
   if(!confirm('Hapus prize ini?'))return;
-  prizes=prizes.filter(p=>p.id!==id);
-  totalOrig=prizes.reduce((s,p)=>s+p.total,0)||1;
-  saveTotalOrig();savePrizes();renderCMSPrizes();updateUI();
-  showNotif('🗑 Prize dihapus.');
+  AG().prizes=AP().filter(p=>p.id!==id);
+  saveGachas();renderCMSPrizes();updateUI();showNotif('🗑 Prize dihapus.');
 }
 
 function addPrize(){
   const t=tcOf('green');
-  const p={id:nextId++,name:'Prize Baru',tier:'R',tc:'green',rem:10,total:10,emoji:'🎁',image:'',cBg:t.cBg,cBorder:t.cBorder};
-  prizes.push(p);
-  totalOrig=prizes.reduce((s,x)=>s+x.total,0);
-  saveTotalOrig();savePrizes();renderCMSPrizes();updateUI();
-  setTimeout(()=>{const el=document.getElementById('cpc-'+p.id);if(el)el.scrollIntoView({behavior:'smooth',block:'center'});},100);
-  showNotif('➕ Prize baru ditambahkan! Jangan lupa klik Simpan.');
+  AP().push({id:nextPId++,name:'Prize Baru',tier:'R',tc:'green',rem:10,total:10,emoji:'🎁',image:'',cBg:t.cBg,cBorder:t.cBorder});
+  saveGachas();renderCMSPrizes();updateUI();showNotif('➕ Prize ditambahkan!');
 }
 
-function resetToDefault(){
-  if(!confirm('Reset semua prize ke data default? Gambar yang diupload akan hilang.'))return;
-  prizes=JSON.parse(JSON.stringify(DEFAULTS));
-  nextId=prizes.reduce((m,p)=>Math.max(m,p.id),0)+1;
-  totalOrig=prizes.reduce((s,p)=>s+p.total,0);
-  saveTotalOrig();savePrizes();renderCMSPrizes();updateUI();
-  showNotif('🔄 Prize direset ke default!');
+function resetPrizesToDefault(){
+  if(!confirm('Reset semua prize gacha ini ke default?'))return;
+  AG().prizes=JSON.parse(JSON.stringify(DEF_PRIZES));
+  nextPId=AG().prizes.reduce((m,p)=>Math.max(m,p.id),0)+1;
+  saveGachas();renderCMSPrizes();updateUI();showNotif('🔄 Prize direset!');
 }
 
-/* ═══════════ CMS HISTORY ═══════════ */
+/* CMS HISTORY */
 function renderCMSHistory(){
   const body=document.getElementById('cms-body');
-  if(!history.length){body.innerHTML='<div class="cms-hist-empty">Belum ada riwayat pull.</div>';return;}
-  body.innerHTML=history.slice().reverse().map((h,i)=>{
-    const t=tcOf(h.tc);
-    const thumb=h.image
-      ?`<div class="cms-hist-thumb"><img src="${h.image}" alt="${esc(h.name)}"></div>`
-      :`<div class="cms-hist-thumb" style="background:${t.bg};border-radius:5px">${h.emoji}</div>`;
-    return `<div class="cms-hist-item">
-      <div class="cms-hist-num">#${history.length-i}</div>
-      ${thumb}
+  if(!aHist.length){body.innerHTML='<div class="cms-hist-empty">Belum ada riwayat pull.</div>';return;}
+  const t=tcOf;
+  body.innerHTML=[...aHist].reverse().map((h,i)=>{
+    const tc=t(h.tc);
+    const thumb=h.image?`<div class="cms-hist-thumb"><img src="${h.image}"></div>`:`<div class="cms-hist-thumb" style="background:${tc.bg};border-radius:5px">${h.emoji}</div>`;
+    return`<div class="cms-hist-item">
+      <div class="cms-hist-num">#${aHist.length-i}</div>${thumb}
       <div class="cms-hist-info">
         <div class="cms-hist-name">${esc(h.name)}</div>
-        <span style="background:${t.bg};color:${t.tx};padding:1px 7px;border-radius:100px;font-size:10px;font-weight:700">${esc(h.tier)}</span>
-        <div class="cms-hist-time">${fmtTime(h.ts)}</div>
+        <div class="cms-hist-puller">👤 ${esc(h.puller||'—')}</div>
+        <div class="cms-hist-time">${fmtFull(h.ts)}</div>
       </div>
+      <span style="background:${tc.bg};color:${tc.tx};padding:2px 8px;border-radius:100px;font-size:10px;font-weight:700;flex-shrink:0">${esc(h.tier)}</span>
     </div>`;
   }).join('');
-  body.innerHTML+=`<div class="danger-zone"><div class="danger-title">⚠ Zona Berbahaya</div>
-    <button class="danger-btn" onclick="clearHistory();renderCMSHistory()">Hapus Semua Riwayat</button></div>`;
+  body.innerHTML+=`<div class="danger-zone"><div class="danger-title">⚠ Zona Berbahaya</div><button class="danger-btn" onclick="clearHistory();renderCMSHistory()">Hapus Semua Riwayat</button></div>`;
 }
 
-/* ═══════════ CMS SETTINGS ═══════════ */
+/* CMS SETTINGS */
 function renderCMSSettings(){
-  const s=settings;
-  const body=document.getElementById('cms-body');
+  const s=AS(),body=document.getElementById('cms-body');
   body.innerHTML=`
   <div class="set-group">
-    <div class="set-group-title">🎨 Banner &amp; Teks Halaman</div>
-    <div class="cms-field"><label>Badge (teks kecil di atas judul)</label><input type="text" id="s-badge" value="${esc(s.badge)}" placeholder="🔥 Pokémon TCG · Vol. 14"></div>
+    <div class="set-group-title">🎨 Banner &amp; Teks</div>
+    <div class="cms-field"><label>Badge</label><input type="text" id="s-badge" value="${esc(s.badge)}"></div>
     <div class="cms-row2">
-      <div class="cms-field"><label>Judul Baris 1</label><input type="text" id="s-t1" value="${esc(s.titleLine1)}" placeholder="Ultimate"></div>
-      <div class="cms-field"><label>Judul Baris 2</label><input type="text" id="s-t2" value="${esc(s.titleLine2)}" placeholder="Charizard Hunt"></div>
+      <div class="cms-field"><label>Judul Baris 1</label><input type="text" id="s-t1" value="${esc(s.titleLine1)}"></div>
+      <div class="cms-field"><label>Judul Baris 2</label><input type="text" id="s-t2" value="${esc(s.titleLine2)}"></div>
     </div>
-    <div class="cms-field"><label>Subjudul (di bawah judul)</label><input type="text" id="s-sub" value="${esc(s.subtitle)}" placeholder="Hadiah fisik · Termasuk PSA 10..."></div>
-    <div class="cms-field"><label>Judul Tab Browser</label><input type="text" id="s-page" value="${esc(s.pageTitle)}" placeholder="Gacha Page · My Store"></div>
+    <div class="cms-field"><label>Subjudul</label><input type="text" id="s-sub" value="${esc(s.subtitle)}"></div>
+    <div class="cms-field"><label>Judul Tab Browser</label><input type="text" id="s-page" value="${esc(s.pageTitle)}"></div>
   </div>
-
   <div class="set-group">
     <div class="set-group-title">💰 Harga</div>
     <div class="cms-row2">
-      <div class="cms-field"><label>Harga 1× Pull (Rp)</label><input type="number" id="s-p1" value="${s.price1x}" min="0" step="1000"></div>
-      <div class="cms-field"><label>Harga 10× Pull (Rp)</label><input type="number" id="s-p10" value="${s.price10x}" min="0" step="1000"></div>
+      <div class="cms-field"><label>Harga 1× (Rp)</label><input type="number" id="s-p1" value="${s.price1x}" min="0"></div>
+      <div class="cms-field"><label>Harga 10× (Rp)</label><input type="number" id="s-p10" value="${s.price10x}" min="0"></div>
     </div>
-    <div class="cms-field"><label>Label Diskon 10× (badge)</label><input type="text" id="s-sav" value="${esc(s.savingsLabel)}" placeholder="HEMAT 10%"></div>
+    <div class="cms-field"><label>Label Diskon 10×</label><input type="text" id="s-sav" value="${esc(s.savingsLabel)}"></div>
   </div>
-
   <div class="set-group">
-    <div class="set-group-title">🃏 Kartu Gacha (sisi belakang)</div>
+    <div class="set-group-title">🃏 Kartu Gacha</div>
     <div class="cms-row2">
-      <div class="cms-field"><label>Emoji Kartu Belakang</label><input type="text" id="s-ce" value="${esc(s.cardBackEmoji)}" placeholder="🔥"></div>
-      <div class="cms-field"><label>Teks Kartu Belakang</label><input type="text" id="s-ct" value="${esc(s.cardBackText)}" placeholder="CHARIZARD HUNT"></div>
+      <div class="cms-field"><label>Emoji Belakang</label><input type="text" id="s-ce" value="${esc(s.cardBackEmoji)}"></div>
+      <div class="cms-field"><label>Teks Belakang</label><input type="text" id="s-ct" value="${esc(s.cardBackText)}"></div>
     </div>
   </div>
-
-  <div style="display:flex;gap:10px;margin-top:4px">
-    <button class="btn-save" style="flex:1;padding:12px;font-size:14px" onclick="applyAndSaveSettings()">✓ Simpan &amp; Terapkan Semua</button>
+  <div style="margin-top:4px">
+    <button class="btn-save" style="width:100%;padding:13px;font-size:14px;border-radius:12px" onclick="applyAndSaveSettings()">✓ Simpan &amp; Terapkan</button>
   </div>
-
-  <div class="danger-zone" style="margin-top:20px">
-    <div class="danger-title">⚠ Zona Berbahaya</div>
-    <button class="danger-btn" onclick="resetSettings()">Reset Konten ke Default</button>
-  </div>`;
+  <div class="danger-zone"><div class="danger-title">⚠ Zona Berbahaya</div><button class="danger-btn" onclick="resetSettings()">Reset ke Default</button></div>`;
 }
 
 function applyAndSaveSettings(){
-  const get=id=>document.getElementById(id);
-  settings.badge        = get('s-badge').value.trim() || DEFAULT_SETTINGS.badge;
-  settings.titleLine1   = get('s-t1').value.trim()   || DEFAULT_SETTINGS.titleLine1;
-  settings.titleLine2   = get('s-t2').value.trim()   || DEFAULT_SETTINGS.titleLine2;
-  settings.subtitle     = get('s-sub').value.trim()  || DEFAULT_SETTINGS.subtitle;
-  settings.pageTitle    = get('s-page').value.trim() || DEFAULT_SETTINGS.pageTitle;
-  settings.price1x      = Math.max(0,parseInt(get('s-p1').value)||DEFAULT_SETTINGS.price1x);
-  settings.price10x     = Math.max(0,parseInt(get('s-p10').value)||DEFAULT_SETTINGS.price10x);
-  settings.savingsLabel = get('s-sav').value.trim()  || DEFAULT_SETTINGS.savingsLabel;
-  settings.cardBackEmoji= get('s-ce').value.trim()   || DEFAULT_SETTINGS.cardBackEmoji;
-  settings.cardBackText = get('s-ct').value.trim()   || DEFAULT_SETTINGS.cardBackText;
-  saveSettings();
-  updateUI();
-  showNotif('✅ Konten & harga berhasil disimpan!');
+  const g=id=>document.getElementById(id);
+  const s=AS();
+  s.badge=g('s-badge').value.trim()||DEF_SETTINGS.badge;
+  s.titleLine1=g('s-t1').value.trim()||DEF_SETTINGS.titleLine1;
+  s.titleLine2=g('s-t2').value.trim()||DEF_SETTINGS.titleLine2;
+  s.subtitle=g('s-sub').value.trim()||DEF_SETTINGS.subtitle;
+  s.pageTitle=g('s-page').value.trim()||DEF_SETTINGS.pageTitle;
+  s.price1x=Math.max(0,parseInt(g('s-p1').value)||DEF_SETTINGS.price1x);
+  s.price10x=Math.max(0,parseInt(g('s-p10').value)||DEF_SETTINGS.price10x);
+  s.savingsLabel=g('s-sav').value.trim()||DEF_SETTINGS.savingsLabel;
+  s.cardBackEmoji=g('s-ce').value.trim()||DEF_SETTINGS.cardBackEmoji;
+  s.cardBackText=g('s-ct').value.trim()||DEF_SETTINGS.cardBackText;
+  saveGachas();updateUI();
+  document.getElementById('cms-active-label').textContent=`Mengelola: ${s.titleLine1} ${s.titleLine2}`;
+  showNotif('✅ Konten & harga disimpan!');
 }
 
 function resetSettings(){
-  if(!confirm('Reset semua konten & harga ke default?'))return;
-  settings={...DEFAULT_SETTINGS};
-  saveSettings();
+  if(!confirm('Reset konten gacha ini ke default?'))return;
+  AG().settings={...DEF_SETTINGS};
+  saveGachas();renderCMSSettings();updateUI();showNotif('🔄 Konten direset!');
+}
+
+/* CMS GACHAS */
+function renderCMSGachas(){
+  const body=document.getElementById('cms-body');
+  body.innerHTML=gachas.map((g,i)=>{
+    const rem=g.prizes.reduce((s,p)=>s+p.rem,0);
+    const isActive=i===aIdx;
+    return`<div class="cms-gacha-card${isActive?' active-g':''}">
+      <div class="cms-gacha-info">
+        <div class="cms-gacha-name">${esc(g.settings.titleLine1)} ${esc(g.settings.titleLine2)}</div>
+        <div class="cms-gacha-meta">${g.prizes.length} prize · ${rem} sisa stok</div>
+      </div>
+      ${!isActive?`<button class="cms-gacha-switch" onclick="switchActiveGacha(${i})">Tampilkan</button>`:'<span style="font-size:11px;color:var(--orange-l);font-weight:700">✓ Aktif</span>'}
+      ${gachas.length>1?`<button class="btn-del" onclick="deleteGacha(${i})" style="margin-left:8px">✕</button>`:''}
+    </div>`;
+  }).join('');
+  body.innerHTML+=`<button class="cms-add-btn" onclick="addGachaFromCMS()">+ Tambah Gacha Baru</button>`;
+  body.innerHTML+=`<div style="margin-top:16px;padding:14px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:var(--r);font-size:12px;color:var(--t3);font-weight:600">💡 Setiap gacha punya prize, riwayat, dan pengaturan tersendiri. Klik "Tampilkan" untuk pindah ke gacha lain.</div>`;
+}
+
+function switchActiveGacha(i){
+  aIdx=i;aHist=loadHistory(AG().id);histShow=10;
+  document.getElementById('cms-active-label').textContent=`Mengelola: ${AS().titleLine1} ${AS().titleLine2}`;
+  updateUI();renderCMSGachas();showNotif(`✅ Pindah ke: ${AS().titleLine1} ${AS().titleLine2}`);
+}
+
+function addGachaFromCMS(){
+  const id=nextGId++;
+  gachas.push(newGacha(id,'Gacha '+id));
+  saveGachas();
+  switchActiveGacha(gachas.length-1);
+  cmsTab='settings';
+  document.querySelectorAll('.cms-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('tab-settings').classList.add('active');
   renderCMSSettings();
-  updateUI();
-  showNotif('🔄 Konten direset ke default!');
+  showNotif('➕ Gacha baru! Edit nama di tab Konten.');
+}
+
+function deleteGacha(i){
+  if(!confirm(`Hapus gacha "${gachas[i].settings.titleLine1} ${gachas[i].settings.titleLine2}"? Semua prize dan riwayatnya akan hilang.`))return;
+  localStorage.removeItem(LS.histPfx+gachas[i].id);
+  gachas.splice(i,1);
+  saveGachas();
+  if(aIdx>=gachas.length)aIdx=gachas.length-1;
+  aHist=loadHistory(AG().id);
+  updateUI();renderCMSGachas();showNotif('🗑 Gacha dihapus.');
 }
 
 /* ═══════════ FIRE PARTICLES ═══════════ */
@@ -750,6 +1085,11 @@ function resetSettings(){
 })();
 
 /* ═══════════ INIT ═══════════ */
+gachas=loadGachas();
+aIdx=0;aHist=loadHistory(AG().id);
+histShow=10;pulledNow=[];spotQueue=[];cmsTab='prizes';
+nextGId=gachas.reduce((m,g)=>Math.max(m,g.id),0)+1;
+nextPId=AP().reduce((m,p)=>Math.max(m,p.id),0)+1;
 updateUI();
 </script>
 </body>
